@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortcut Sensei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .main-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-nav ul li {
+            position: relative;
+        }
+
+        .main-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .main-nav ul li a:hover {
+            background-color: #444;
+            border-radius: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 5px 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 20px;
+            margin-right: 10px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-container button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #6a1b9a;
+        }
+
+        .search-container button i {
+            color: #fff;
+        }
+
+         /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .search-container, .menu-toggle {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-container input[type="text"] {
+                width: 100%;
+            }
+
+            .features .feature, .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Search table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            background-color: #fff;
+            overflow: hidden; /* Ensures that curved corners are applied */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #2cba19;
+            color: #333;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+        .indented-paragraph {
+        margin-left: 11.5%; /* Adjust the value 165px as needed */
+        margin-right: 4.4%;  /*440 px */
+    }
+    .my-custom-class {
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Vertically center items */
+        }
+       .image{
+        width: 1000px;
+        height: 500px;
+        margin-left: 165px;
+
+       }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .footer-links li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons li {
+            display: inline;
+        }
+
+        .social-icons li a {
+            color: #fff;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .social-icons li a:hover {
+            color: #6a1b9a;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .subscribe-form input[type="email"] {
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1em;
+        }
+
+        .subscribe-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #6a1b9a;
+        }
+
+        footer p {
+            margin: 20px 0 0;
+        }
+
+
+            
+         ol {
+
+margin-left: 11.5%; /* Adjust the value 165px as needed */
+margin-right: 4.4%;  /*440 px */
+
+}
+
+ol li {
+margin-bottom: 1%; /* Margin between list items */
+}
+
+ul {
+
+margin-left: 11.5%; /* Adjust the value 165px as needed */
+margin-right: 4.4%;  /*440 px */
+
+}
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                flex-direction: column;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .features .feature,
+            .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .search-container input[type="text"] {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="Homepage.html">Shortcut Sensei</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="Homepage.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="https://www.instagram.com/rafi_s_b_m/">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button type="button" onclick="searchShortcuts()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <br>
+
+    <h1 style="text-align: left; margin-left: 8%;font-size: 40px;">Top 75 Shortcuts for Skype</h1>
+
+    
+        
+        <h3 class="indented-paragraph">Welcome to Shortcut Sensei!</h3>
+
+        <p class="indented-paragraph" style="line-height: 22px;"> 
+            
+        Ready to supercharge your Skype experience? Whether you're making calls, hosting meetings, or chatting with friends, mastering Skype shortcuts can save you valuable time and make your interactions smoother.<br><br>
+        
+
+    </p>
+
+    <div class="my-custom-class">
+        <img src="Skype.jpg" alt="Skype" class="image">
+    </div>    
+
+    <br>
+
+   
+
+        <p class="indented-paragraph" style="line-height: 26px;"> <b>Why Use Shortcuts?</b>
+
+            <ul style="line-height: 21px;">
+          
+              <li><b>Speed : </b>Perform tasks faster without navigating through menus.</li>
+              <li><b>Efficiency : </b>Streamline your workflow and reduce repetitive actions.</li>
+              <li><b>Productivity : </b>Focus more on your conversations and less on finding features.</li>
+          
+            </ul>
+          
+          
+              </p>
+              <p class="indented-paragraph" style="line-height: 21px;">Explore the comprehensive list of Skype shortcuts below, sorted into categories for easy reference. Master these shortcuts to become a Skype pro!<p>
+
+
+    <h2 style="text-align: left; margin-left: 10.5%;">General Shortcuts</h2>
+  
+    <p class="indented-paragraph">
+  
+
+        Master the basics of Skype with these essential shortcuts. From starting calls to managing contacts, these shortcuts cover the fundamental functions you need for smooth communication.
+    <br>
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="color: #fff;">Shortcuts</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ctrl + Comma (Ctrl + ,)</td>
+                <td>Open Settings</td>
+            </tr>
+            <tr>
+                <td>Esc</td>
+                <td>Close active window/popup</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Q</td>
+                <td>Quit Skype</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + Q</td>
+                <td>Sign out</td>
+            </tr>
+            <tr>
+                <td>Ctrl + H</td>
+                <td>Show Skype Home</td>
+            </tr>
+            <tr>
+                <td>Ctrl + 1</td>
+                <td>Open Contacts</td>
+            </tr>
+            <tr>
+                <td>Ctrl + 2</td>
+                <td>Open Calls</td>
+            </tr>
+            <tr>
+                <td>Ctrl + 3</td>
+                <td>Open Chats</td>
+            </tr>
+            <tr>
+                <td>Ctrl + 4</td>
+                <td>Open Notifications</td>
+            </tr>
+            <tr>
+                <td>Ctrl + N</td>
+                <td>Start a new chat</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Tab</td>
+                <td>Switch between chats</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + Tab</td>
+                <td>Switch back between chats</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Enter</td>
+                <td>Send message</td>
+            </tr>
+            <tr>
+                <td>Shift + Enter</td>
+                <td>Insert a new line in a chat</td>
+            </tr>
+            <tr>
+                <td>Ctrl + F</td>
+                <td>Find in current chat</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + F</td>
+                <td>Search Skype</td>
+            </tr>
+            <tr>
+                <td>Alt + 1</td>
+                <td>Switch to Contacts view</td>
+            </tr>
+            <tr>
+                <td>Alt + 2</td>
+                <td>Switch to Calls view</td>
+            </tr>
+            <tr>
+                <td>Alt + 3</td>
+                <td>Switch to Chats view</td>
+            </tr>
+            <tr>
+                <td>Alt + 4</td>
+                <td>Switch to Notifications view</td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+    <h2 style="text-align: left; margin-left: 10.5%;">Messaging and Formatting Shortcuts</h2>
+  
+    <p class="indented-paragraph">
+  
+
+        Enhance your messages with these Skype shortcuts for formatting. Easily apply bold, italic and other text styles to your messages for clearer communication. Quickly mark messages as read or unread to stay organized and on top of your conversations.
+    
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="color: #fff;">Shortcuts</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ctrl + E</td>
+                <td>Focus on text input in the chat box</td>
+            </tr>
+            <tr>
+                <td>Ctrl + L</td>
+                <td>Mark all messages as read</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + U</td>
+                <td>Mark selected messages as unread</td>
+            </tr>
+            <tr>
+                <td>Ctrl + B</td>
+                <td>Apply bold formatting</td>
+            </tr>
+            <tr>
+                <td>Ctrl + I</td>
+                <td>Apply italic formatting</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + X</td>
+                <td>Apply strikethrough formatting</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + 7</td>
+                <td>Apply list formatting</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + M</td>
+                <td>Apply monospaced font</td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+    <h2 style="text-align: left; margin-left: 10.5%;">Calls Shortcuts</h2>
+  
+    <p class="indented-paragraph">
+  
+        Take control of your Skype calls with these handy shortcuts. From starting calls to adjusting settings during a call, these shortcuts make your calling experience smoother and more efficient.
+    </p>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th style="color: #fff;">Shortcuts</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ctrl + Shift + K</td>
+                <td>Start a call</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + P</td>
+                <td>Toggle video in call</td>
+            </tr>
+            <tr>
+                <td>Ctrl + M</td>
+                <td>Mute or unmute microphone</td>
+            </tr>
+           
+            <tr>
+                <td>Ctrl + R</td>
+                <td>Answer a call</td>
+            </tr>
+            <tr>
+                <td>Ctrl + E</td>
+                <td>End the call</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + H</td>
+                <td>Hold/resume call</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + T</td>
+                <td>Take a snapshot of the call</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + J</td>
+                <td>Show/hide chat during call</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + Y</td>
+                <td>Switch to full screen in video call</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + R</td>
+                <td>Toggle recording in call</td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+    <h2 style="text-align: left; margin-left: 10.5%;">Screen Sharing Shortcuts</h2>
+  
+    <p class="indented-paragraph">
+  
+
+            Effortlessly manage screen sharing sessions with these Skype shortcuts.
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="color: #fff;">Shortcuts</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ctrl + Shift + S</td>
+                <td>Start/stop screen sharing</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <h2 style="text-align: left; margin-left: 10.5%;">Emoticons and Reactions Shortcuts</h2>
+  
+    <p class="indented-paragraph">
+  
+
+        Express yourself with ease using these Skype shortcuts for emoticons and reactions.
+    
+    </p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th style="color: #fff;">Shortcuts</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ctrl + J</td>
+                <td>Open Emoticons picker</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + Space</td>
+                <td>Insert emoticon</td>
+            </tr>
+            <tr>
+                <td>Ctrl + G</td>
+                <td>Send a GIF</td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+
+    <h2 style="text-align: left; margin-left: 10.5%;">Accessibility Shortcuts</h2>
+  
+    <p class="indented-paragraph">
+  
+        Zoom, toggle dark mode, and reset zoom effortlessly with these Skype shortcuts.
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="color: #fff;">Shortcuts</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ctrl + Shift + D</td>
+                <td>Toggle Dark Mode</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Plus (+)</td>
+                <td>Zoom in (increase text size)</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Minus (-)</td>
+                <td>Zoom out (decrease text size)</td>
+            </tr>
+            <tr>
+                <td>Ctrl + 0</td>
+                <td>Reset zoom to default</td>
+            </tr>
+            <tr>
+                <td>Alt + Enter</td>
+                <td>Toggle Full screen mode</td>
+            </tr>
+            <tr>
+                <td>Alt + F4</td>
+                <td>Close active window</td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+
+    <h2 style="text-align: left; margin-left: 10.5%;">File Sharing Shortcuts</h2>
+  
+    <p class="indented-paragraph">
+  
+
+        Share files seamlessly 
+    
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="color: #fff;">Shortcuts</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ctrl + O</td>
+                <td>Open file picker to share a file</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + G</td>
+                <td>Open Gallery</td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+    <h2 style="text-align: left; margin-left: 10.5%;">Notifications Shortcuts</h2>
+  
+    <p class="indented-paragraph">
+  
+
+        Handle calls smoothly with shortcuts to accept, decline, and toggle visibility.
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="color: #fff;">Shortcuts</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ctrl + Shift + A</td>
+                <td>Accept incoming call</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + D</td>
+                <td>Decline incoming call</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + N</td>
+                <td>Show/hide notifications panel</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <h2 style="text-align: left; margin-left: 10.5%;">Focus and Navigation Shortcuts</h2>
+  
+    <p class="indented-paragraph">
+  
+
+        Stay focused and navigate Skype efficiently with these handy shortcuts.
+    
+    </p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th style="color: #fff;">Shortcuts</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tab</td>
+                <td>Move through items</td>
+            </tr>
+            <tr>
+                <td>Shift + Tab</td>
+                <td>Move back through items</td>
+            </tr>
+            <tr>
+                <td>Arrow keys</td>
+                <td>Navigate through messages/conversations</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Pg Up (Page Up)</td>
+                <td>Page up in chat</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Pg Dn (Page Down)</td>
+                <td>Page down in chat</td>
+            </tr>
+
+            </tbody>
+        </table>
+        
+
+        <h2 style="text-align: left; margin-left: 10.5%;">Contacts Shortcuts</h2>
+  
+        <p class="indented-paragraph">
+      
+    
+            Streamline your contact management with these Skype shortcuts. From adding contacts to managing groups, stay connected with ease.
+        
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="color: #fff;">Shortcuts</th>
+                    <th style="color: #fff;">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ctrl + Shift + A</td>
+                    <td>Add new contact</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Shift + C</td>
+                    <td>Create new group chat</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Shift + E</td>
+                    <td>Edit selected contact</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Shift + R</td>
+                    <td>View recent chats</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 style="text-align: left; margin-left: 10.5%;">Quick Access Shortcuts</h2>
+  
+        <p class="indented-paragraph">
+      
+            Speed up your Skype experience with these shortcuts for quick access to essential features and functions.
+        
+        </p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="color: #fff;">Shortcuts</th>
+                    <th style="color: #fff;">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ctrl + Shift + L</td>
+                    <td>Open Skype Translator</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Shift + U</td>
+                    <td>Check for updates</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + I</td>
+                    <td>Show profile information</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Shift + M</td>
+                    <td>Minimize the Skype window</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + W</td>
+                    <td>Close the current chat</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 style="text-align: left; margin-left: 10.5%;">Miscellaneous Shortcuts</h2>
+  
+        <p class="indented-paragraph">
+      
+    
+            Access essential functions like help, lock app, printing chats, and more with these versatile Skype shortcuts.
+        
+        </p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="color: #fff;">Shortcuts</th>
+                    <th style="color: #fff;">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ctrl + P</td>
+                    <td>Print chat</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + D</td>
+                    <td>Delete conversation</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + L</td>
+                    <td>Lock App</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Shift + T</td>
+                    <td>Toggle message read receipts</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Shift + N</td>
+                    <td>Start a new conversation</td>
+                </tr>
+                <tr>
+                    <td>F1</td>
+                    <td>Open Help</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + U</td>
+                    <td>Toggle spell checker on/off</td>
+                </tr>
+                <tr>
+                    <td>Alt + H</td>
+                    <td>Open Help menu</td>
+                </tr>
+            </tbody>
+        </table>
+        </body>
+        </html>
+                
+
+<hr> <br>
+ 
+ <p class="indented-paragraph" style="line-height: 25px">
+
+    <b>You're Now a Skype Shortcut Sensei!</b><br>
+
+          
+        Congratulations, you've successfully explored the top 75 Skype shortcuts! By now, you should feel more confident in your ability to navigate Skype efficiently and effortlessly. These shortcuts are designed to streamline your Skype experience and save you valuable time.<br>
+
+    <b>Tips for Making the Most of These Shortcuts:</b>
+  </p>
+<p class="indented-paragraph">
+
+
+       <ol>     
+        
+            <li><b>Practice Makes Perfect:</b> Spend some time incorporating these shortcuts into your Skype routine to become more proficient.</li>
+          <li><b>Customize Your Experience: </b> Don't hesitate to tweak and personalize these shortcuts to better suit your workflow and preferences.</li>
+          <li><b>Share with Others: </b> Spread the word about these shortcuts with your friends, family, and colleagues to help them level up their Skype game too.</li>
+
+       </ol> 
+</p>
+
+<p class="indented-paragraph" style="line-height: 24px;">
+            <b>We Value Your Feedback:</b> <br>
+
+            Your feedback is crucial in helping us improve Shortcut Sensei. If you have any suggestions for additional shortcuts or other applications you'd like us to cover, please don't hesitate to reach out.
+            <br>
+
+           <br>
+            Thank you for using Shortcut Sensei. We hope these shortcuts enhance your Skype experience and make your communication more efficient and enjoyable. Happy shortcutting!
+  
+  </p>
+<br>    
+
+
+<footer>
+    <div class="footer-content">
+        <ul class="footer-links">
+            <li><a href="Homepage.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#news">Latest News</a></li>
+        </ul>
+        <ul class="social-icons">
+            <li><a href="https://www.facebook.com/profile.php?id=100015198880002"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/RAFI09925204"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/rafi-s-b-m-a3492a265/"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.instagram.com/rafi_s_b_m/"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <div class="subscribe-form">
+            <input type="email" placeholder="Subscribe to our newsletter">
+            <button type="button">Subscribe</button>
+        </div>
+        <p>&copy; 2024 Shortcut Sensei. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.main-nav ul').classList.toggle('show');
+    });
+</script>
+
+</body>
+</html>

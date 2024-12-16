@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortcut Sensei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .main-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-nav ul li {
+            position: relative;
+        }
+
+        .main-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .main-nav ul li a:hover {
+            background-color: #444;
+            border-radius: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 5px 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 20px;
+            margin-right: 10px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-container button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #6a1b9a;
+        }
+
+        .search-container button i {
+            color: #fff;
+        }
+
+         /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .search-container, .menu-toggle {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-container input[type="text"] {
+                width: 100%;
+            }
+
+            .features .feature, .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Search table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            background-color: #fff;
+            overflow: hidden; /* Ensures that curved corners are applied */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #2cba19;
+            color: #333;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+        .indented-paragraph {
+        margin-left: 11.5%; /* Adjust the value 165px as needed */
+        margin-right: 4.4%;  /*440 px */
+    }
+    .my-custom-class {
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Vertically center items */
+        }
+       .image{
+        width: 1000px;
+        height: 500px;
+        margin-left: 165px;
+
+       }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .footer-links li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons li {
+            display: inline;
+        }
+
+        .social-icons li a {
+            color: #fff;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .social-icons li a:hover {
+            color: #6a1b9a;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .subscribe-form input[type="email"] {
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1em;
+        }
+
+        .subscribe-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #6a1b9a;
+        }
+
+        footer p {
+            margin: 20px 0 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                flex-direction: column;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .features .feature,
+            .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .search-container input[type="text"] {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="Homepage.html">Shortcut Sensei</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="Homepage.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="https://www.instagram.com/rafi_s_b_m/">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button type="button" onclick="searchShortcuts()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <br>
+    <h1 style="text-align: left; margin-left: 10.5%;font-size: 40px;">Top 65 Shortcuts for WinRAR</h1>
+    <p class="indented-paragraph"> Transform your creative vision into reality with Adobe Photoshop. From photo editing to graphic design, Photoshop offers unparalleled versatility and precision, empowering you to bring your ideas to life.
+
+    </p>
+
+    <div class="my-custom-class">
+        <img src="WinRAR.jpg" alt="WinRAR" class="image">
+    </div>    
+
+    <br>
+
+<p class="indented-paragraph" style="line-height: 26px;"> <b>Discover the Possibilities</b><br>
+
+    Unleash your creativity and explore endless possibilities with Adobe Photoshop. Whether you're a professional designer, photographer, or enthusiast, Photoshop provides the tools you need to turn imagination into stunning visuals.
+    </p>
+      <br>
+  
+
+  <p class="indented-paragraph"></p>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">File Operations</h2>
+
+  <p class="indented-paragraph">
+
+    Learn essential shortcuts for managing your archives efficiently. From opening and creating archives to adding files and extracting them, master the commands to streamline your file management process.</p>
+
+  <table>
+    
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Ctrl + O</td>
+            <td>Open Archive</td>
+        </tr>
+        <tr>
+            <td>Alt + A</td>
+            <td>Create New Archive</td>
+        </tr>
+        <tr>
+            <td>Alt + A</td>
+            <td>Add Files to Archive</td>
+        </tr>
+        <tr>
+            <td>Alt + E</td>
+            <td>Extract to Specific Folder</td>
+        </tr>
+        <tr>
+            <td>Ctrl + E</td>
+            <td>Extract Here</td>
+        </tr>
+        <tr>
+            <td>Alt + T</td>
+            <td>Test Archive</td>
+        </tr>
+        <tr>
+            <td>Alt + R</td>
+            <td>Repair Archive</td>
+        </tr>
+        <tr>
+            <td>Alt + C</td>
+            <td>Convert Archive</td>
+        </tr>
+        <tr>
+            <td>Alt + L</td>
+            <td>Lock Archive</td>
+        </tr>
+        <tr>
+            <td>Alt + M</td>
+            <td>Archive Comment</td>
+        </tr>
+        </tbody>
+    </table>
+  <br>
+
+  <!-- 2nd part -->
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Navigation and Selection</h2>
+
+  <p class="indented-paragraph">
+
+    Navigate through your archives like a pro. Use shortcuts to swiftly move between folders, select multiple files with ease, and perform essential file operations without reaching for your mouse.</p>
+
+
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Backspace</td>
+            <td>Up One Level</td>
+        </tr>
+        <tr>
+            <td>Ctrl + \</td>
+            <td>Go to Root Folder</td>
+        </tr>
+        <tr>
+            <td>Ctrl + A</td>
+            <td>Select All Files</td>
+        </tr>
+        <tr>
+            <td>Ctrl + D</td>
+            <td>Deselect All Files</td>
+        </tr>
+        <tr>
+            <td>Ctrl + Shift + I</td>
+            <td>Select Inverse</td>
+        </tr>
+        <tr>
+            <td>Down Arrow</td>
+            <td>Next Item</td>
+        </tr>
+        <tr>
+            <td>Up Arrow</td>
+            <td>Previous Item</td>
+        </tr>
+        <tr>
+            <td>Enter</td>
+            <td>Open File</td>
+        </tr>
+        <tr>
+            <td>Alt + Enter</td>
+            <td>Properties</td>
+        </tr>
+        </tbody>
+    </table>
+     <br>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">View and Display</h2>
+
+  <p class="indented-paragraph">
+
+    Optimize your viewing experience with these shortcuts. Toggle between different views, sort files effortlessly, and explore archive contents efficiently using these commands.</p>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>F11</td>
+            <td>Full Screen</td>
+        </tr>
+        <tr>
+            <td>Alt + G</td>
+            <td>Toggle Thumbnail View</td>
+        </tr>
+        <tr>
+            <td>Ctrl + Tab</td>
+            <td>Toggle Comment Window</td>
+        </tr>
+        <tr>
+            <td>Ctrl + N</td>
+            <td>Sort by Name</td>
+        </tr>
+        <tr>
+            <td>Ctrl + S</td>
+            <td>Sort by Size</td>
+        </tr>
+        <tr>
+            <td>Ctrl + T</td>
+            <td>Sort by Date</td>
+        </tr>
+        <tr>
+            <td>Ctrl + Y</td>
+            <td>Sort by Type</td>
+        </tr>
+        <tr>
+            <td>Ctrl + Shift + E</td>
+            <td>Toggle Explorer View</td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+
+
+<h2 style="text-align: left; margin-left: 10.5%;">Compression Settings</h2>
+
+<p class="indented-paragraph">
+
+    Fine-tune your compression settings effortlessly. Quickly adjust compression methods to suit your needs, whether you're prioritizing speed or file size.</p>
+
+  <table>
+   
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Alt + 1</td>
+            <td>Set Compression Method to Fastest</td>
+        </tr>
+        <tr>
+            <td>Alt + 2</td>
+            <td>Set Compression Method to Fast</td>
+        </tr>
+        <tr>
+            <td>Alt + 3</td>
+            <td>Set Compression Method to Normal</td>
+        </tr>
+        <tr>
+            <td>Alt + 4</td>
+            <td>Set Compression Method to Good</td>
+        </tr>
+        <tr>
+            <td>Alt + 5</td>
+            <td>Set Compression Method to Best</td>
+        </tr>
+        </tbody>
+    </table>
+     <br>
+
+
+     
+     <h2 style="text-align: left; margin-left: 10.5%;">Archive Management</h2>
+
+     <p class="indented-paragraph">
+     
+         
+         Efficiently manage your archives with these shortcuts. From splitting and merging archives to encrypting and decrypting them, these commands will help you maintain and secure your files effectively.</p>
+     
+       <table>
+        
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td>Ctrl + Shift + S</td>
+                     <td>Split Archive</td>
+                 </tr>
+                 <tr>
+                     <td>Ctrl + Shift + M</td>
+                     <td>Merge Archives</td>
+                 </tr>
+                 <tr>
+                     <td>Ctrl + P</td>
+                     <td>Set Password</td>
+                 </tr>
+                 <tr>
+                     <td>Ctrl + Q</td>
+                     <td>Encrypt Archive</td>
+                 </tr>
+                 <tr>
+                     <td>Ctrl + Shift + Q</td>
+                     <td>Decrypt Archive</td>
+                 </tr>
+             </tbody>
+             </table>        
+          <br>
+     
+
+          
+          <h2 style="text-align: left; margin-left: 10.5%;">Multi-volume Archives</h2>
+
+<p class="indented-paragraph">
+
+    Learn shortcuts specific to handling multi-volume archives. Easily create, extract, and manage large archives split into multiple volumes, ensuring smooth file transfer and storage.</p>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>Alt + V</td>
+                    <td>Create Multi-volume Archive</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Shift + V</td>
+                    <td>Extract Multi-volume Archive</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Alt + V</td>
+                    <td>Test Multi-volume Archive</td>
+                </tr>            
+        </tbody>
+    </table>
+     <br>
+
+
+   
+
+
+     <h2 style="text-align: left; margin-left: 10.5%;">Command Line Usage</h2>
+
+     <p class="indented-paragraph">
+        Master command-line usage of WinRAR with these shortcuts. Execute various operations directly from the command line interface, enabling automation and integration into scripts and workflows.
+        </p>
+     
+
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                    <tr>
+                        <td>-ad</td>
+                        <td>Add Files to Archive</td>
+                    </tr>
+                    <tr>
+                        <td>-ep</td>
+                        <td>Exclude Paths from Names</td>
+                    </tr>
+                    <tr>
+                        <td>-df</td>
+                        <td>Do not add files with full paths</td>
+                    </tr>
+                    <tr>
+                        <td>-ibck</td>
+                        <td>Run WinRAR in the background</td>
+                    </tr>
+                    <tr>
+                        <td>-r</td>
+                        <td>Recursively add files from directories</td>
+                    </tr>
+                    <tr>
+                        <td>-p[password]</td>
+                        <td>Set Password</td>
+                    </tr>
+                    <tr>
+                        <td>-s[+|-]file[,...]</td>
+                        <td>Read list of files to compress or decompress from stdin</td>
+                    </tr>                
+             </tbody>
+         </table>
+          <br>
+
+
+          <h2 style="text-align: left; margin-left: 10.5%;">Miscellaneous</h2>
+
+          <p class="indented-paragraph">
+        
+            Discover additional shortcuts to enhance your WinRAR experience. From accessing settings and help to managing files within archives, these commands will make you a WinRAR power user in no time.</p>
+        
+           
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th style="color: #fff;">Key Combination</th>
+                        <th style="color: #fff;">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Alt + S</td>
+                    <td>Settings</td>
+                </tr>
+                <tr>
+                    <td>F1</td>
+                    <td>Help</td>
+                </tr>
+                <tr>
+                    <td>F2</td>
+                    <td>About WinRAR</td>
+                </tr>
+                <tr>
+                    <td>Alt + F4</td>
+                    <td>Close WinRAR</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + F9</td>
+                    <td>Minimize WinRAR</td>
+                </tr>
+                <tr>
+                    <td>Alt + D</td>
+                    <td>Delete Files in Archive</td>
+                </tr>
+                <tr>
+                    <td>Alt + M</td>
+                    <td>Comment Archive</td>
+                </tr>
+                <tr>
+                    <td>Alt + P</td>
+                    <td>Add Recovery Record</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + I</td>
+                    <td>Show Information</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + F</td>
+                    <td>Find Files</td>
+                </tr>
+                <tr>
+                    <td>F2</td>
+                    <td>Rename File</td>
+                </tr>
+                <tr>
+                    <td>Alt + M</td>
+                    <td>Move Files</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + C</td>
+                    <td>Copy Files</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + V</td>
+                    <td>Paste Files</td>
+                </tr>
+                <tr>
+                    <td>F3</td>
+                    <td>View File</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + L</td>
+                    <td>Toggle File List</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + X</td>
+                    <td>Exit WinRAR</td>
+                </tr>
+                <tr>
+                    <td>Esc</td>
+                    <td>Cancel Operation</td>
+                </tr>
+                </tbody>
+            </table>
+             <br>        
+
+    
+ <hr> <br>
+      <p class="indented-paragraph">After mastering these shortcuts, you'll navigate Microsoft Edge like a pro, boosting your productivity and efficiency. Remember to practice regularly to integrate them seamlessly into your workflow. Additionally, consider customizing shortcuts to suit your preferences and workflow better. Happy browsing!</p>
+    <br>
+    </body>        
+
+
+
+<footer>
+    <div class="footer-content">
+        <ul class="footer-links">
+            <li><a href="Homepage.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#news">Latest News</a></li>
+        </ul>
+        <ul class="social-icons">
+            <li><a href="https://www.facebook.com/profile.php?id=100015198880002"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/RAFI09925204"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/rafi-s-b-m-a3492a265/"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.instagram.com/rafi_s_b_m/"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <div class="subscribe-form">
+            <input type="email" placeholder="Subscribe to our newsletter">
+            <button type="button">Subscribe</button>
+        </div>
+        <p>&copy; 2024 Shortcut Sensei. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.main-nav ul').classList.toggle('show');
+    });
+</script>
+
+</body>
+</html>

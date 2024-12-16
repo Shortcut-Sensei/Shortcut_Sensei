@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortcut Sensei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .main-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-nav ul li {
+            position: relative;
+        }
+
+        .main-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .main-nav ul li a:hover {
+            background-color: #444;
+            border-radius: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 5px 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 20px;
+            margin-right: 10px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-container button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #6a1b9a;
+        }
+
+        .search-container button i {
+            color: #fff;
+        }
+
+         /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .search-container, .menu-toggle {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-container input[type="text"] {
+                width: 100%;
+            }
+
+            .features .feature, .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Search table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            background-color: #fff;
+            overflow: hidden; /* Ensures that curved corners are applied */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #2cba19;
+            color: #333;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+        .indented-paragraph {
+        margin-left: 11.5%; /* Adjust the value 165px as needed */
+        margin-right: 4.4%;  /*440 px */
+    }
+    .my-custom-class {
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Vertically center items */
+        }
+       .image{
+        width: 1000px;
+        height: 500px;
+        margin-left: 165px;
+
+       }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .footer-links li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons li {
+            display: inline;
+        }
+
+        .social-icons li a {
+            color: #fff;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .social-icons li a:hover {
+            color: #6a1b9a;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .subscribe-form input[type="email"] {
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1em;
+        }
+
+        .subscribe-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #6a1b9a;
+        }
+
+        footer p {
+            margin: 20px 0 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                flex-direction: column;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .features .feature,
+            .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .search-container input[type="text"] {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="Homepage.html">Shortcut Sensei</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="Homepage.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="https://www.instagram.com/rafi_s_b_m/">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button type="button" onclick="searchShortcuts()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <br>
+    <h1 style="text-align: left; margin-left: 10.5%;font-size: 40px;">Top 75 Shortcuts for Acrobat Adobe Reader</h1>
+    <p class="indented-paragraph"> Transform your creative vision into reality with Adobe Photoshop. From photo editing to graphic design, Photoshop offers unparalleled versatility and precision, empowering you to bring your ideas to life.
+
+    </p>
+
+    <div class="my-custom-class">
+        <img src="Acrobat Adobe Reader.png" alt="Acrobat Adobe Reader" class="image">
+    </div>    
+
+    <br>
+
+<p class="indented-paragraph" style="line-height: 26px;"> <b>Discover the Possibilities</b><br>
+
+    Unleash your creativity and explore endless possibilities with Adobe Photoshop. Whether you're a professional designer, photographer, or enthusiast, Photoshop provides the tools you need to turn imagination into stunning visuals.
+    </p>
+      <br>
+  
+
+  <p class="indented-paragraph"></p>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Navigation Shortcuts</h2>
+
+  <p class="indented-paragraph">
+    Navigate through your PDF documents quickly and efficiently with these shortcuts. Move between pages, jump to specific pages, and navigate views with ease.</p>
+
+  <table>
+    
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>Previous Page</td>
+              <td>Ctrl + ←</td>
+            </tr>
+            <tr>
+              <td>Next Page</td>
+              <td>Ctrl + →</td>
+            </tr>
+            <tr>
+              <td>First Page</td>
+              <td>Home</td>
+            </tr>
+            <tr>
+              <td>Last Page</td>
+              <td>End</td>
+            </tr>
+            <tr>
+              <td>Page Number Entry</td>
+              <td>Ctrl + N</td>
+            </tr>
+            <tr>
+              <td>Scroll Up</td>
+              <td>Up Arrow</td>
+            </tr>
+            <tr>
+              <td>Scroll Down</td>
+              <td>Down Arrow</td>
+            </tr>
+            <tr>
+              <td>Scroll Left</td>
+              <td>Left Arrow</td>
+            </tr>
+            <tr>
+              <td>Scroll Right</td>
+              <td>Right Arrow</td>
+            </tr>
+            <tr>
+              <td>Previous View</td>
+              <td>Alt + ←</td>
+            </tr>
+            <tr>
+              <td>Next View</td>
+              <td>Alt + →</td>
+            </tr>
+            <tr>
+              <td>Previous Document</td>
+              <td>Ctrl + Shift + ←</td>
+            </tr>
+            <tr>
+              <td>Next Document</td>
+              <td>Ctrl + Shift + →</td>
+            </tr>
+        </tbody>
+    </table>
+  <br>
+
+  <!-- 2nd part -->
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Zoom Shortcuts:</h2>
+
+  <p class="indented-paragraph">
+
+    Control the zoom level of your PDF document effortlessly using these shortcuts. Zoom in to focus on details or zoom out for a broader view.</p>
+
+
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>Zoom In</td>
+              <td>Ctrl + +</td>
+            </tr>
+            <tr>
+              <td>Zoom Out</td>
+              <td>Ctrl + -</td>
+            </tr>
+            <tr>
+              <td>Zoom to Selection</td>
+              <td>Ctrl + 3</td>
+            </tr>
+            <tr>
+              <td>Zoom to Fit Page Width</td>
+              <td>Ctrl + 0</td>
+            </tr>
+            <tr>
+              <td>Zoom to Fit Page</td>
+              <td>Ctrl + 1</td>
+            </tr>
+            <tr>
+              <td>Zoom to Actual Size</td>
+              <td>Ctrl + 2</td>
+            </tr>
+            <tr>
+              <td>Zoom to Custom Scale</td>
+              <td>Ctrl + K</td>
+            </tr>          
+        </tbody>
+    </table>
+     <br>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Editing Shortcuts</h2>
+
+  <p class="indented-paragraph">
+
+    Edit your PDF documents seamlessly with these shortcuts. Select text, copy, cut, and paste content, and undo or redo changes with ease.
+</p>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+          <table>
+            <tr>
+              <td>Select Text</td>
+              <td>Double-click</td>
+            </tr>
+            <tr>
+              <td>Select Line</td>
+              <td>Triple-click</td>
+            </tr>
+            <tr>
+              <td>Select All</td>
+              <td>Ctrl + A</td>
+            </tr>
+            <tr>
+              <td>Copy</td>
+              <td>Ctrl + C</td>
+            </tr>
+            <tr>
+              <td>Cut</td>
+              <td>Ctrl + X</td>
+            </tr>
+            <tr>
+              <td>Paste</td>
+              <td>Ctrl + V</td>
+            </tr>
+            <tr>
+              <td>Undo</td>
+              <td>Ctrl + Z</td>
+            </tr>
+            <tr>
+              <td>Redo</td>
+              <td>Ctrl + Y</td>
+            </tr>          
+        </tbody>
+    </table>
+    <br>
+
+
+<h2 style="text-align: left; margin-left: 10.5%;">View Shortcuts</h2>
+
+<p class="indented-paragraph">
+
+  Customize your viewing experience with these shortcuts. Enter or exit full-screen mode, toggle between different viewing tools, and rotate pages as needed.</p>
+
+  <table>
+   
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>Full Screen Mode</td>
+              <td>Ctrl + L</td>
+            </tr>
+            <tr>
+              <td>Exit Full Screen</td>
+              <td>Esc</td>
+            </tr>
+            <tr>
+              <td>Toggle Hand Tool</td>
+              <td>H</td>
+            </tr>
+            <tr>
+              <td>Toggle Zoom Tool</td>
+              <td>Z</td>
+            </tr>
+            <tr>
+              <td>Rotate Clockwise</td>
+              <td>Ctrl + Shift + +</td>
+            </tr>
+            <tr>
+              <td>Rotate Counterclockwise</td>
+              <td>Ctrl + Shift + -</td>
+            </tr>                        
+        </tbody>
+    </table>
+     <br>
+
+
+     <h2 style="text-align: left; margin-left: 10.5%;">File Shortcuts</h2>
+
+     <p class="indented-paragraph">
+   
+      Manage your PDF files effortlessly with these shortcuts. Create new documents, open existing ones, save your changes, and close documents or the Acrobat application.
+
+</p>
+   
+      
+       <table border="1">
+           <thead>
+               <tr>
+                   <th style="color: #fff;">Key Combination</th>
+                   <th style="color: #fff;">Description</th>
+               </tr>
+           </thead>
+           <tbody>
+                <tr>
+                  <td>New Document</td>
+                  <td>Ctrl + N</td>
+                </tr>
+                <tr>
+                  <td>Open Document</td>
+                  <td>Ctrl + O</td>
+                </tr>
+                <tr>
+                  <td>Save Document</td>
+                  <td>Ctrl + S</td>
+                </tr>
+                <tr>
+                  <td>Save As</td>
+                  <td>Ctrl + Shift + S</td>
+                </tr>
+                <tr>
+                  <td>Close Document</td>
+                  <td>Ctrl + W</td>
+                </tr>
+                <tr>
+                  <td>Close Acrobat</td>
+                  <td>Ctrl + Q</td>
+                </tr>                                                                      
+           </tbody>
+       </table>
+        <br>       
+
+     
+     <h2 style="text-align: left; margin-left: 10.5%;">Annotations Shortcuts</h2>
+
+     <p class="indented-paragraph">
+     
+         
+      Enhance your PDFs with annotations using these shortcuts. Add sticky notes, highlight text, underline or strikethrough content, and insert stamps or comments.
+
+    </p>
+     
+       <table>
+        
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                <tr>
+                  <td>Add Sticky Note</td>
+                  <td>Ctrl + 6</td>
+                </tr>
+                <tr>
+                  <td>Add Text Comment</td>
+                  <td>Ctrl + 8</td>
+                </tr>
+                <tr>
+                  <td>Highlight Text</td>
+                  <td>Ctrl + 4</td>
+                </tr>
+                <tr>
+                  <td>Underline Text</td>
+                  <td>Ctrl + 5</td>
+                </tr>
+                <tr>
+                  <td>Strikethrough Text</td>
+                  <td>Ctrl + 6</td>
+                </tr>
+                <tr>
+                  <td>Add Note to Replace Text</td>
+                  <td>Ctrl + 7</td>
+                </tr>
+                <tr>
+                  <td>Add Text Box</td>
+                  <td>Ctrl + 9</td>
+                </tr>
+                <tr>
+                  <td>Add Stamp</td>
+                  <td>Ctrl + Alt + 0</td>
+                </tr>     
+             </tbody>
+             </table>        
+          <br>
+
+     <h2 style="text-align: left; margin-left: 10.5%;">Search and Find Shortcuts</h2>
+
+     <p class="indented-paragraph">
+      Quickly find specific content within your PDF documents using these shortcuts. Open the search panel, find next or previous occurrences, and navigate through search results efficiently.
+
+
+        </p>
+     
+
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                <tr>
+                  <td>Open Search Panel</td>
+                  <td>Ctrl + F</td>
+                </tr>
+                <tr>
+                  <td>Find Next</td>
+                  <td>Ctrl + G</td>
+                </tr>
+                <tr>
+                  <td>Find Previous</td>
+                  <td>Ctrl + Shift + G</td>
+                </tr>                    
+             </tbody>
+         </table>
+          <br>
+
+
+          <h2 style="text-align: left; margin-left: 10.5%;">Document Navigation Shortcuts</h2>
+
+          <p class="indented-paragraph">
+        
+            Efficiently navigate within your PDF documents using these shortcuts. Jump to specific pages, navigate between views, and move through multiple documents effortlessly.</p>
+        
+           
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th style="color: #fff;">Key Combination</th>
+                        <th style="color: #fff;">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <td>Go to Page</td>
+                      <td>Ctrl + Shift + N</td>
+                    </tr>
+                    <tr>
+                      <td>Go to Previous View</td>
+                      <td>Alt + ←</td>
+                    </tr>
+                    <tr>
+                      <td>Go to Next View</td>
+                      <td>Alt + →</td>
+                    </tr>                                       
+                </tbody>
+            </table>
+             <br>        
+
+
+             <h2 style="text-align: left; margin-left: 10.5%;">Document Manipulation Shortcuts</h2>
+
+             <p class="indented-paragraph">
+             
+               Manipulate your PDF documents effectively using these shortcuts. Insert pages, extract pages, delete pages, and perform other document manipulation tasks seamlessly.</p>
+             
+             
+                 <table border="1">
+                     <thead>
+                         <tr>
+                             <th style="color: #fff;">Key Combination</th>
+                             <th style="color: #fff;">Description</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                         <tr>
+                           <td>Insert Page from Clipboard</td>
+                           <td>Ctrl + Shift + V</td>
+                         </tr>
+                         <tr>
+                           <td>Insert Blank Page</td>
+                           <td>Ctrl + Shift + Q</td>
+                         </tr>
+                         <tr>
+                           <td>Insert from File</td>
+                           <td>Ctrl + Shift + I</td>
+                         </tr>
+                         <tr>
+                           <td>Extract Pages</td>
+                           <td>Ctrl + Shift + E</td>
+                         </tr>
+                         <tr>
+                           <td>Delete Page</td>
+                           <td>Ctrl + Shift + D</td>
+                         </tr>
+                         <tr>
+                           <td>Crop Page</td>
+                           <td>Ctrl + T</td>
+                         </tr>                                                 
+                     </tbody>
+                 </table>
+                  <br>                          
+
+
+             <h2 style="text-align: left; margin-left: 10.5%;">Bookmarks Shortcuts</h2>
+
+             <p class="indented-paragraph">
+           
+              Utilize bookmarks to easily navigate through your PDF documents using these shortcuts. Show or hide the bookmarks panel, and move between bookmarks with ease.</p>
+           
+              
+               <table border="1">
+                   <thead>
+                       <tr>
+                           <th style="color: #fff;">Key Combination</th>
+                           <th style="color: #fff;">Description</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                      <tr>
+                        <td>Show/Hide Bookmarks Panel</td>
+                        <td>Ctrl + B</td>
+                      </tr>
+                      <tr>
+                        <td>Go to Next Bookmark</td>
+                        <td>Ctrl + Shift + N</td>
+                      </tr>
+                      <tr>
+                        <td>Go to Previous Bookmark</td>
+                        <td>Ctrl + Shift + P</td>
+                      </tr>                                         
+                   </tbody>
+               </table>
+                <br>       
+
+                <h2 style="text-align: left; margin-left: 10.5%;">Forms Shortcuts</h2>
+
+                <p class="indented-paragraph">
+              
+                  Interact with form fields in your PDF documents using these shortcuts. Select and deselect form fields, check checkboxes, toggle radio buttons, and submit forms efficiently.
+
+                </p>
+              
+                 
+                  <table border="1">
+                      <thead>
+                          <tr>
+                              <th style="color: #fff;">Key Combination</th>
+                              <th style="color: #fff;">Description</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td>Select Form Field</td>
+                            <td>Tab</td>
+                          </tr>
+                          <tr>
+                            <td>Deselect Form Field</td>
+                            <td>Shift + Tab</td>
+                          </tr>
+                          <tr>
+                            <td>Check Checkbox</td>
+                            <td>Space</td>
+                          </tr>
+                          <tr>
+                            <td>Toggle Radio Button</td>
+                            <td>Space</td>
+                          </tr>
+                          <tr>
+                            <td>Submit Form</td>
+                            <td>Ctrl + Enter</td>
+                          </tr>                                     
+                      </tbody>
+                  </table>
+                   <br>       
+
+                   <h2 style="text-align: left; margin-left: 10.5%;">Printing Shortcuts</h2>
+
+                   <p class="indented-paragraph">
+                 
+                    Print your PDF documents with ease using these shortcuts. Access printing options, print the current view or selected pages, and manage your printing tasks efficiently.</p>
+                 
+                    
+                     <table border="1">
+                         <thead>
+                             <tr>
+                                 <th style="color: #fff;">Key Combination</th>
+                                 <th style="color: #fff;">Description</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                          <table>
+                            <tr>
+                              <td>Print</td>
+                              <td>Ctrl + P</td>
+                            </tr>
+                            <tr>
+                              <td>Print Current View</td>
+                              <td>Ctrl + Shift + P</td>
+                            </tr>
+                            <tr>
+                              <td>Print Selected Pages</td>
+                              <td>Ctrl + Shift + O</td>
+                            </tr>                                              
+                         </tbody>
+                     </table>
+                      <br>       
+
+                   
+
+
+
+                      <h2 style="text-align: left; margin-left: 10.5%;">Miscellaneous Shortcuts</h2>
+
+                      <p class="indented-paragraph">
+                    
+                        Access additional features and preferences with these shortcuts. Customize your Acrobat experience, show or hide toolbars and menu bars, and toggle comments lists effortlessly.</p>
+                    
+                       
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th style="color: #fff;">Key Combination</th>
+                                    <th style="color: #fff;">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                  <td>Preferences</td>
+                                  <td>Ctrl + K</td>
+                                </tr>
+                                <tr>
+                                  <td>Show/Hide Toolbar</td>
+                                  <td>F8</td>
+                                </tr>
+                                <tr>
+                                  <td>Show/Hide Menu Bar</td>
+                                  <td>F9</td>
+                                </tr>
+                                <tr>
+                                  <td>Toggle Comments List</td>
+                                  <td>Ctrl + Alt + 8</td>
+                                </tr>                              
+                            </tbody>
+                        </table>
+                         <br>       
+
+ <hr> <br>
+      <p class="indented-paragraph">After mastering these shortcuts, you'll navigate Microsoft Edge like a pro, boosting your productivity and efficiency. Remember to practice regularly to integrate them seamlessly into your workflow. Additionally, consider customizing shortcuts to suit your preferences and workflow better. Happy browsing!</p>
+    <br>
+    </body>        
+
+
+
+<footer>
+    <div class="footer-content">
+        <ul class="footer-links">
+            <li><a href="Homepage.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#news">Latest News</a></li>
+        </ul>
+        <ul class="social-icons">
+            <li><a href="https://www.facebook.com/profile.php?id=100015198880002"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/RAFI09925204"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/rafi-s-b-m-a3492a265/"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.instagram.com/rafi_s_b_m/"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <div class="subscribe-form">
+            <input type="email" placeholder="Subscribe to our newsletter">
+            <button type="button">Subscribe</button>
+        </div>
+        <p>&copy; 2024 Shortcut Sensei. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.main-nav ul').classList.toggle('show');
+    });
+</script>
+
+</body>
+</html>

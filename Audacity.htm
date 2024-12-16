@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortcut Sensei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .main-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-nav ul li {
+            position: relative;
+        }
+
+        .main-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .main-nav ul li a:hover {
+            background-color: #444;
+            border-radius: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 5px 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 20px;
+            margin-right: 10px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-container button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #6a1b9a;
+        }
+
+        .search-container button i {
+            color: #fff;
+        }
+
+         /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .search-container, .menu-toggle {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-container input[type="text"] {
+                width: 100%;
+            }
+
+            .features .feature, .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Search table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            background-color: #fff;
+            overflow: hidden; /* Ensures that curved corners are applied */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #2cba19;
+            color: #333;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+        .indented-paragraph {
+        margin-left: 11.5%; /* Adjust the value 165px as needed */
+        margin-right: 4.4%;  /*440 px */
+    }
+    .my-custom-class {
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Vertically center items */
+        }
+       .image{
+        width: 1000px;
+        height: 500px;
+        margin-left: 165px;
+
+       }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .footer-links li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons li {
+            display: inline;
+        }
+
+        .social-icons li a {
+            color: #fff;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .social-icons li a:hover {
+            color: #6a1b9a;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .subscribe-form input[type="email"] {
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1em;
+        }
+
+        .subscribe-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #6a1b9a;
+        }
+
+        footer p {
+            margin: 20px 0 0;
+        }
+
+
+
+         /* for ordered list of items*/
+
+        ol {
+
+            margin-left: 11.5%; /* Adjust the value 165px as needed */
+            margin-right: 4.4%;  /*440 px */
+
+          }
+
+            ol li {
+            margin-bottom: 1%; /* Margin between list items */
+            }
+
+          ul {
+
+            margin-left: 11.5%; /* Adjust the value 165px as needed */
+            margin-right: 4.4%;  /*440 px */
+
+            }
+
+            ul li {
+            margin-bottom: 1.3%; /* Margin between list items */
+            }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                flex-direction: column;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .features .feature,
+            .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .search-container input[type="text"] {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="Homepage.html">Shortcut Sensei</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="Homepage.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="">Blog</a></li>
+                    <li><a href="https://www.instagram.com/rafi_s_b_m/">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button type="button" onclick="searchShortcuts()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <br>
+    <h1 style="text-align: left; margin-left: 7.5%;font-size: 40px;">Top 85 Shortcuts for Audacity</h1>
+    <p class="indented-paragraph" style="line-height: 22px;"> 
+
+      <h2 class="indented-paragraph">Discover the Power of Audacity Shortcuts</h2>
+      <p class="indented-paragraph" style="line-height: 22px;"> 
+      Audacity is a powerful, free, open-source audio editing software that is widely used by professionals and hobbyists alike. Whether you are editing podcasts, creating music, or fine-tuning audio recordings, knowing the right shortcuts can significantly speed up your workflow and enhance your productivity.<br><br>
+
+      On this page, we've compiled a comprehensive list of the top 85 shortcuts for Audacity, categorized for your convenience. Mastering these shortcuts will help you navigate through the software more efficiently and focus on what truly matters—your creativity.<br>
+
+      </p>
+
+    </p>
+
+    <div class="my-custom-class">
+        <img src="Audacity.jpg" alt="Audacity" class="image">
+    </div>    
+
+    <br>
+
+<p class="indented-paragraph" style="line-height: 26px;"> <b>Maximize Your Efficiency with Audacity Shortcuts</b><br>
+
+      Our curated list of Audacity shortcuts covers everything from basic navigation to advanced editing techniques. By familiarizing yourself with these shortcuts, you can:
+
+    <ul>
+
+      <li><b>Save Time: </b>Perform common tasks quickly without relying on menus.</li>
+      <li><b>Boost Productivity: </b>Streamline your editing process and focus more on creative aspects.</li>
+      <li><b>Enhance Workflow:</b>Easily switch between different tools and functions.</li>
+      <li><b>Improve Accuracy:</b>Reduce the chances of errors by minimizing mouse usage.</li>
+
+
+    </ul>
+
+    </p>
+      <br>
+  
+
+  <p class="indented-paragraph"></p>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Navigation Shortcuts</h2>
+
+  <p class="indented-paragraph">
+
+    These shortcuts are designed to help you navigate through your audio tracks quickly and efficiently. They allow you to move the cursor, zoom in and out, and focus on specific sections of your project.
+
+</p>
+
+    
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>Home</td>
+              <td>Move Cursor to Start</td>
+            </tr>
+            <tr>
+              <td>End</td>
+              <td>Move Cursor to End</td>
+            </tr>
+            <tr>
+              <td>Left Arrow</td>
+              <td>Move Cursor Left</td>
+            </tr>
+            <tr>
+              <td>Right Arrow</td>
+              <td>Move Cursor Right</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Left Arrow</td>
+              <td>Move Cursor to Previous Label</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Right Arrow</td>
+              <td>Move Cursor to Next Label</td>
+            </tr>
+            <tr>
+              <td>Ctrl + 1</td>
+              <td>Zoom In</td>
+            </tr>
+            <tr>
+              <td>Ctrl + 2</td>
+              <td>Zoom Normal</td>
+            </tr>
+            <tr>
+              <td>Ctrl + 3</td>
+              <td>Zoom Out</td>
+            </tr>
+            <tr>
+              <td>Ctrl + F</td>
+              <td>Zoom to Selection</td>
+            </tr>             
+        </tbody>
+    </table>
+  <br>
+
+  <!-- 2nd part -->
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Editing Shortcuts</h2>
+
+  <p class="indented-paragraph">
+    Editing shortcuts streamline the editing process by providing quick actions for common tasks like cutting, copying, pasting, deleting, undoing, and redoing. They help you manipulate audio clips and arrangements with ease.
+
+</p>
+
+
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>Ctrl + X</td>
+              <td>Cut</td>
+            </tr>
+            <tr>
+              <td>Ctrl + C</td>
+              <td>Copy</td>
+            </tr>
+            <tr>
+              <td>Ctrl + V</td>
+              <td>Paste</td>
+            </tr>
+            <tr>
+              <td>Delete</td>
+              <td>Delete</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Z</td>
+              <td>Undo</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Y</td>
+              <td>Redo</td>
+            </tr>
+            <tr>
+              <td>Ctrl + A</td>
+              <td>Select All</td>
+            </tr>
+            <tr>
+              <td>Ctrl + T</td>
+              <td>Select Track</td>
+            </tr>
+            <tr>
+              <td>Ctrl + B</td>
+              <td>Select Region</td>
+            </tr>
+            <tr>
+              <td>Shift + End</td>
+              <td>Select Cursor to End</td>
+            </tr>
+            <tr>
+              <td>Shift + Home</td>
+              <td>Select Cursor to Start</td>
+            </tr>
+            <tr>
+              <td>Shift + Left Arrow</td>
+              <td>Extend Selection Left</td>
+            </tr>
+            <tr>
+              <td>Shift + Right Arrow</td>
+              <td>Extend Selection Right</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Shift + Left Arrow</td>
+              <td>Shrink Selection Left</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Shift + Right Arrow</td>
+              <td>Shrink Selection Right</td>
+            </tr>                                  
+        </tbody>
+    </table>
+     <br>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Playback Shortcuts</h2>
+
+  <p class="indented-paragraph">
+    Playback shortcuts facilitate playback control, allowing you to play, pause, stop, and adjust playback speed. They also include features like loop playback, scrubbing, and playing from selection to enhance your editing workflow.
+
+</p>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>Spacebar</td>
+              <td>Play/Pause</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Spacebar</td>
+              <td>Stop</td>
+            </tr>
+            <tr>
+              <td>Shift + Spacebar</td>
+              <td>Play from Selection</td>
+            </tr>
+            <tr>
+              <td>Shift + L</td>
+              <td>Loop Playback</td>
+            </tr>
+            <tr>
+              <td>Shift + S</td>
+              <td>Toggle Scrubbing</td>
+            </tr>
+            <tr>
+              <td>Shift + Up Arrow</td>
+              <td>Forward Playback</td>
+            </tr>
+            <tr>
+              <td>Shift + Down Arrow</td>
+              <td>Reverse Playback</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Up Arrow</td>
+              <td>Increase Playback Speed</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Down Arrow</td>
+              <td>Decrease Playback Speed</td>
+            </tr>                                                   
+        </tbody>
+    </table>
+    <br>
+
+
+<h2 style="text-align: left; margin-left: 10.5%;">Recording Shortcuts</h2>
+
+<p class="indented-paragraph">
+    Recording shortcuts are essential for starting, pausing, and stopping recording sessions swiftly. They may also include features like sound-activated recording, enabling you to capture audio efficiently.
+
+</p>
+
+  <table>
+   
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>R</td>
+              <td>Record</td>
+            </tr>
+            <tr>
+              <td>Shift + R</td>
+              <td>Toggle Sound Activated Recording</td>
+            </tr>
+            <tr>
+              <td>P</td>
+              <td>Pause Recording</td>
+            </tr>
+            <tr>
+              <td>S</td>
+              <td>Stop Recording</td>
+            </tr>          
+        </tbody>
+    </table>
+     <br>
+
+
+     <h2 style="text-align: left; margin-left: 10.5%;">Track Control Shortcuts</h2>
+
+     <p class="indented-paragraph">
+
+        Track control shortcuts help manage individual audio tracks within your project. They enable actions such as muting, soloing, adjusting track height, syncing tracks, and toggling track panels for better organization and control.
+
+
+</p>
+   
+      
+       <table border="1">
+           <thead>
+               <tr>
+                   <th style="color: #fff;">Key Combination</th>
+                   <th style="color: #fff;">Description</th>
+               </tr>
+           </thead>
+           <tbody>
+              <tr>
+                <td>M</td>
+                <td>Toggle Mute</td>
+              </tr>
+              <tr>
+                <td>S</td>
+                <td>Toggle Solo</td>
+              </tr>
+              <tr>
+                <td>H</td>
+                <td>Toggle Track Height</td>
+              </tr>
+              <tr>
+                <td>T</td>
+                <td>Minimize/Maximize Track Height</td>
+              </tr>
+              <tr>
+                <td>Shift + L</td>
+                <td>Toggle Sync-Lock Tracks</td>
+              </tr>
+              <tr>
+                <td>Ctrl + P</td>
+                <td>Toggle Track Panel</td>
+              </tr>             
+           </tbody>
+       </table>
+        <br>       
+
+
+
+
+     <h2 style="text-align: left; margin-left: 10.5%;">Time Shift Tool Shortcuts</h2>
+
+     <p class="indented-paragraph">
+
+        These shortcuts are specific to the time shift tool, which allows you to move audio clips horizontally along the timeline. They enable precise adjustments to the timing and placement of audio elements within your project.
+
+        </p>
+     
+
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                <tr>
+                  <td>Ctrl + Shift + Left Arrow</td>
+                  <td>Move Clip Left</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + Right Arrow</td>
+                  <td>Move Clip Right</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Left Arrow</td>
+                  <td>Nudge Clip Left</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Right Arrow</td>
+                  <td>Nudge Clip Right</td>
+                </tr>                                       
+             </tbody>
+         </table>
+          <br>
+
+
+          <h2 style="text-align: left; margin-left: 10.5%;">Envelope Tool Shortcuts</h2>
+
+          <p class="indented-paragraph">
+
+            Envelope tool shortcuts are tailored to the manipulation of volume and other envelope points within your audio tracks. They facilitate tasks such as creating, deleting, adjusting, and resetting envelope points for dynamic audio editing.</p>
+        
+           
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th style="color: #fff;">Key Combination</th>
+                        <th style="color: #fff;">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <td>Ctrl + Click</td>
+                      <td>Create Envelope Point</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + Click</td>
+                      <td>Delete Envelope Point</td>
+                    </tr>
+                    <tr>
+                      <td>Alt + Up Arrow</td>
+                      <td>Adjust Envelope Up</td>
+                    </tr>
+                    <tr>
+                      <td>Alt + Down Arrow</td>
+                      <td>Adjust Envelope Down</td>
+                    </tr>
+                    <tr>
+                      <td>Alt + Left Arrow</td>
+                      <td>Adjust Envelope Left</td>
+                    </tr>
+                    <tr>
+                      <td>Alt + Right Arrow</td>
+                      <td>Adjust Envelope Right</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Alt + Click</td>
+                      <td>Reset Envelope Point</td>
+                    </tr>                                               
+                </tbody>
+            </table>
+             <br>        
+
+
+             <h2 style="text-align: left; margin-left: 10.5%;">Custom Shortcut</h2>
+
+             <p class="indented-paragraph">
+        
+                The custom shortcut category provides an option for users to define their own personalized shortcuts based on their specific preferences and workflow requirements. It allows for flexibility and customization in utilizing Audacity's features.
+        
+                </p>
+             
+        
+                 <table border="1">
+                     <thead>
+                         <tr>
+                             <th style="color: #fff;">Key Combination</th>
+                             <th style="color: #fff;">Description</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                          <td>Ctrl + Alt + Shift + X</td>
+                          <td>Custom Shortcut (Replace X with desired key)</td>
+                        </tr>                           
+                     </tbody>
+                 </table>
+                  <br>
+
+
+
+     <h2 style="text-align: left; margin-left: 10.5%;">Other Useful Shortcuts</h2>
+
+     <p class="indented-paragraph">
+        This category includes miscellaneous shortcuts for accessing preferences, exporting and importing audio, saving and opening projects, and managing the Audacity interface. These shortcuts enhance overall workflow efficiency and user experience.
+
+        </p>
+     
+
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                <tr>
+                  <td>F12</td>
+                  <td>Toggle Toolbar</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + P</td>
+                  <td>Preferences</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + E</td>
+                  <td>Export Audio</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + I</td>
+                  <td>Import Audio</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + S</td>
+                  <td>Save Project</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + O</td>
+                  <td>Open Recent Project</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + N</td>
+                  <td>New Project</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + W</td>
+                  <td>Close Current Project</td>
+                </tr>
+                <tr>
+                  <td>Alt + F4</td>
+                  <td>Exit Audacity</td>
+                </tr>                                                  
+             </tbody>
+         </table>
+          <br>
+
+
+
+
+
+ <hr> <br>
+ 
+ 
+ <p class="indented-paragraph" style="line-height: 24px">
+
+  <h3 class="indented-paragraph"> Your Audacity Skills</h3>
+
+  <p class="indented-paragraph" style="line-height: 24px">
+      By now, you should have a solid understanding of the most useful shortcuts in Audacity. Incorporating these shortcuts into your daily workflow can greatly enhance your audio editing efficiency and overall productivity.<br>
+  </p>
+<h3 class="indented-paragraph">Keep Exploring and Learning</h3>
+
+</p>
+
+<p class="indented-paragraph" style="line-height: 23px">
+  Audacity is constantly evolving, with new features and updates that can further improve your editing experience. Stay updated with the latest versions and continue exploring new shortcuts and techniques to refine your skills.
+</p>
+
+<h3 class="indented-paragraph">Join the Community</h3>
+<p class="indented-paragraph">
+
+
+     <ol style="line-height: 22px;">     
+      
+          <li><b>Official Audacity Forum: </b> Join discussions, ask for advice, and share your own experiences.</li>
+        <li><b>YouTube Tutorials:  </b>  Find video tutorials to visually learn new tricks and tips.</li>
+        <li><b>Audacity Wiki: </b>Explore the comprehensive documentation and guides.</li>
+
+     </ol> 
+</p>
+
+
+<h3 class="indented-paragraph">We Value your Feedback</h3>
+
+<p class="indented-paragraph" style="line-height: 22px;">
+          We hope you found this guide helpful. If you have any suggestions for additional shortcuts or improvements, please feel free to contact us. Your feedback helps us make Shortcut Sensei even better!
+          <br>
+</p>
+
+
+
+
+<br>    
+
+
+
+
+<footer>
+    <div class="footer-content">
+        <ul class="footer-links">
+            <li><a href="Homepage.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#news">Latest News</a></li>
+        </ul>
+        <ul class="social-icons">
+            <li><a href="https://www.facebook.com/profile.php?id=100015198880002"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/RAFI09925204"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/rafi-s-b-m-a3492a265/"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.instagram.com/rafi_s_b_m/"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <div class="subscribe-form">
+            <input type="email" placeholder="Subscribe to our newsletter">
+            <button type="button">Subscribe</button>
+        </div>
+        <p>&copy; 2024 Shortcut Sensei. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.main-nav ul').classList.toggle('show');
+    });
+</script>
+
+</body>
+</html>

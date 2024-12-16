@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortcut Sensei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .main-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-nav ul li {
+            position: relative;
+        }
+
+        .main-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .main-nav ul li a:hover {
+            background-color: #444;
+            border-radius: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 5px 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 20px;
+            margin-right: 10px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-container button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #6a1b9a;
+        }
+
+        .search-container button i {
+            color: #fff;
+        }
+
+         /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .search-container, .menu-toggle {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-container input[type="text"] {
+                width: 100%;
+            }
+
+            .features .feature, .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Search table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            background-color: #fff;
+            overflow: hidden; /* Ensures that curved corners are applied */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #2cba19;
+            color: #333;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+        .indented-paragraph {
+        margin-left: 11.5%; /* Adjust the value 165px as needed */
+        margin-right: 4.4%;  /*440 px */
+    }
+    .my-custom-class {
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Vertically center items */
+        }
+       .image{
+        width: 1000px;
+        height: 500px;
+        margin-left: 165px;
+
+       }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .footer-links li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons li {
+            display: inline;
+        }
+
+        .social-icons li a {
+            color: #fff;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .social-icons li a:hover {
+            color: #6a1b9a;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .subscribe-form input[type="email"] {
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1em;
+        }
+
+        .subscribe-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #6a1b9a;
+        }
+
+        footer p {
+            margin: 20px 0 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                flex-direction: column;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .features .feature,
+            .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .search-container input[type="text"] {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="Homepage.html">Shortcut Sensei</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="Homepage.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="https://www.instagram.com/rafi_s_b_m/">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button type="button" onclick="searchShortcuts()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <br>
+    <h1 style="text-align: left; margin-left: 10.5%;font-size: 40px;">Top 64 Shortcuts for File Explorer</h1>
+    <p class="indented-paragraph"> Transform your creative vision into reality with Adobe Photoshop. From photo editing to graphic design, Photoshop offers unparalleled versatility and precision, empowering you to bring your ideas to life.
+
+    </p>
+
+    <div class="my-custom-class">
+        <img src="File Explorer.jpg" alt="File Explorer" class="image">
+    </div>    
+
+    <br>
+
+<p class="indented-paragraph" style="line-height: 26px;"> <b>Discover the Possibilities</b><br>
+
+    Unleash your creativity and explore endless possibilities with Adobe Photoshop. Whether you're a professional designer, photographer, or enthusiast, Photoshop provides the tools you need to turn imagination into stunning visuals.
+    </p>
+      <br>
+  
+
+  <p class="indented-paragraph"></p>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">General Shortcuts</h2>
+
+  <p class="indented-paragraph">
+
+    Discover essential shortcuts to swiftly navigate through File Explorer, including opening new windows, creating folders, and managing properties with just a few keystrokes.</p>
+
+  <table>
+    
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <td>Win + E</td>
+                  <td>Open File Explorer</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + N</td>
+                  <td>Open a new window</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + W</td>
+                  <td>Close the current window</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + N</td>
+                  <td>Create a new folder</td>
+                </tr>
+                <tr>
+                  <td>Alt + Enter</td>
+                  <td>Open the Properties dialog box for the selected item</td>
+                </tr>
+                <tr>
+                  <td>F11</td>
+                  <td>Maximize or minimize the window</td>
+                </tr>              
+        </tbody>
+    </table>
+  <br>
+
+  <!-- 2nd part -->
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Navigation</h2>
+
+  <p class="indented-paragraph">
+
+    Learn how to effortlessly move around File Explorer using shortcuts to access the address bar, search box, and navigate backward and forward through your file hierarchy.
+
+</p>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <td>Alt + D</td>
+                  <td>Select the address bar</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + L</td>
+                  <td>Select the address bar</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + E</td>
+                  <td>Select the search box</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + F</td>
+                  <td>Select the search box</td>
+                </tr>
+                <tr>
+                  <td>Backspace</td>
+                  <td>Go up one folder level in the hierarchy</td>
+                </tr>
+                <tr>
+                  <td>Alt + Up Arrow</td>
+                  <td>Go up one folder level</td>
+                </tr>
+                <tr>
+                  <td>Alt + Left Arrow</td>
+                  <td>Go back</td>
+                </tr>
+                <tr>
+                  <td>Alt + Right Arrow</td>
+                  <td>Go forward</td>
+                </tr>
+        </tbody>
+    </table>
+     <br>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">File and Folder Management</h2>
+
+  <p class="indented-paragraph">
+
+    Efficiently manage your files and folders with shortcuts for copying, cutting, pasting, renaming, deleting, and selecting multiple items.</p>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <td>Ctrl + C</td>
+                  <td>Copy the selected item</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + X</td>
+                  <td>Cut the selected item</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + V</td>
+                  <td>Paste the selected item</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + D</td>
+                  <td>Delete the selected item</td>
+                </tr>
+                <tr>
+                  <td>Delete</td>
+                  <td>Delete the selected item</td>
+                </tr>
+                <tr>
+                  <td>Shift + Delete</td>
+                  <td>Permanently delete the selected item without moving it to the Recycle Bin</td>
+                </tr>
+                <tr>
+                  <td>F2</td>
+                  <td>Rename the selected item</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Z</td>
+                  <td>Undo an action</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Y</td>
+                  <td>Redo an action</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + A</td>
+                  <td>Select all items</td>
+                </tr>              
+        </tbody>
+    </table>
+    <br>
+
+
+<h2 style="text-align: left; margin-left: 10.5%;">View and Layout</h2>
+
+<p class="indented-paragraph">
+
+    Customize your File Explorer experience with shortcuts to change the view and layout of your files, including adjusting icon sizes and switching between different viewing options.
+
+</p>
+
+  <table>
+   
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <td>Ctrl + Mouse Wheel Up</td>
+                  <td>Increase the size of icons</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Mouse Wheel Down</td>
+                  <td>Decrease the size of icons</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + 1</td>
+                  <td>Extra large icons view</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + 2</td>
+                  <td>Large icons view</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + 3</td>
+                  <td>Medium icons view</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + 4</td>
+                  <td>Small icons view</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + 5</td>
+                  <td>List view</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + 6</td>
+                  <td>Details view</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + 7</td>
+                  <td>Tiles view</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + 8</td>
+                  <td>Content view</td>
+                </tr>              
+        </tbody>
+    </table>
+     <br>
+
+     
+     <h2 style="text-align: left; margin-left: 10.5%;">Pane Management</h2>
+
+     <p class="indented-paragraph">
+     
+         
+        Master shortcuts to manage various panes in File Explorer, including toggling the Preview and Details panes and navigating through different folders in the Navigation pane.</p>
+     
+       <table>
+        
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                    <tr>
+                      <td>Alt + P</td>
+                      <td>Show or hide the Preview pane</td>
+                    </tr>
+                    <tr>
+                      <td>Alt + Shift + P</td>
+                      <td>Show or hide the Details pane</td>
+                    </tr>
+                    <tr>
+                      <td>Alt + Shift + E</td>
+                      <td>Display all folders above the selected folder in the Navigation pane</td>
+                    </tr>
+                    <tr>
+                      <td>Alt + Shift + L</td>
+                      <td>Display Libraries in the Navigation pane</td>
+                    </tr>                  
+             </tbody>
+             </table>        
+          <br>
+     
+
+          
+          <h2 style="text-align: left; margin-left: 10.5%;">Search</h2>
+
+<p class="indented-paragraph">
+
+    Quickly locate files and folders using shortcuts to initiate searches and display all folders above the selected folder, streamlining your search process.</p>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <td>F3</td>
+                  <td>Search for a file or folder</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + F</td>
+                  <td>Search for a file or folder</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + E</td>
+                  <td>Display all folders above the selected folder</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + N</td>
+                  <td>Create a new folder</td>
+                </tr>               
+        </tbody>
+    </table>
+     <br>
+
+
+     <h2 style="text-align: left; margin-left: 10.5%;">Zip and Unzip</h2>
+
+     <p class="indented-paragraph">
+     
+        Learn essential shortcuts for compressing files into ZIP archives, extracting files from ZIP archives, and renaming files or folders directly within File Explorer.</p>
+     
+     
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                    <tr>
+                      <td>Alt + Shift + N</td>
+                      <td>Compress files into a new ZIP archive</td>
+                    </tr>
+                    <tr>
+                      <td>Alt + Shift + E</td>
+                      <td>Extract files from a ZIP archive</td>
+                    </tr>
+                    <tr>
+                      <td>Alt + Shift + R</td>
+                      <td>Rename a file or folder</td>
+                    </tr>                                                 
+             </tbody>
+         </table>
+          <br>
+
+
+          <h2 style="text-align: left; margin-left: 10.5%;">File Operations</h2>
+
+          <p class="indented-paragraph">
+          
+            Discover shortcuts for advanced file operations such as moving files to specific folders, creating shortcuts, and opening files with different applications, enhancing your file management efficiency.</p>
+          
+          
+              <table border="1">
+                  <thead>
+                      <tr>
+                          <th style="color: #fff;">Key Combination</th>
+                          <th style="color: #fff;">Description</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                        <tr>
+                          <td>Ctrl + Shift + M</td>
+                          <td>Move the selected item to a specified folder</td>
+                        </tr>
+                        <tr>
+                          <td>Alt + Shift + S</td>
+                          <td>Create a shortcut to the selected item</td>
+                        </tr>
+                        <tr>
+                          <td>Alt + Shift + O</td>
+                          <td>Open the selected item with a different application</td>
+                        </tr>                                                    
+                  </tbody>
+              </table>
+               <br>
+
+
+               <h2 style="text-align: left; margin-left: 10.5%;">Selection and Navigation</h2>
+
+               <p class="indented-paragraph">
+
+                Master shortcuts for precise selection of multiple files and efficient navigation within large folders, enabling you to streamline your workflow and focus on your tasks.</p>
+               
+               
+                   <table border="1">
+                       <thead>
+                           <tr>
+                               <th style="color: #fff;">Key Combination</th>
+                               <th style="color: #fff;">Description</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                            <tr>
+                              <td>Ctrl + Shift + Up Arrow</td>
+                              <td>Select all items in a folder hierarchy</td>
+                            </tr>
+                            <tr>
+                              <td>Alt + Shift + Down Arrow</td>
+                              <td>Expand a folder in the Navigation pane</td>
+                            </tr>
+                            <tr>
+                              <td>Alt + Shift + Left Arrow</td>
+                              <td>Collapse the current selection in the Navigation pane</td>
+                            </tr>                                                             
+                       </tbody>
+                   </table>
+                    <br>
+
+
+                    <h2 style="text-align: left; margin-left: 10.5%;">Customization</h2>
+
+                    <p class="indented-paragraph">
+                    
+                        Explore shortcuts to customize your File Explorer experience, including options to show or hide file extensions, toggle hidden files visibility, and customize folder options according to your preferences.</p>
+                    
+                    
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th style="color: #fff;">Key Combination</th>
+                                    <th style="color: #fff;">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <tr>
+                                      <td>Alt + Shift + F</td>
+                                      <td>Show or hide file extensions</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Alt + Shift + H</td>
+                                      <td>Show or hide hidden files and folders</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Alt + Shift + V</td>
+                                      <td>Customize folder options</td>
+                                    </tr>                                                                           
+                            </tbody>
+                        </table>
+                         <br>
+
+     <h2 style="text-align: left; margin-left: 10.5%;">Miscellaneous</h2>
+
+     <p class="indented-paragraph">
+        Explore additional shortcuts for various tasks, such as refreshing the window, accessing the context menu, changing text selection, and navigating through different elements in File Explorer.
+        </p>
+     
+
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                    <tr>
+                      <td>F4</td>
+                      <td>Display the address bar list in File Explorer</td>
+                    </tr>
+                    <tr>
+                      <td>F5</td>
+                      <td>Refresh the current window</td>
+                    </tr>
+                    <tr>
+                      <td>F6</td>
+                      <td>Cycle through elements in the current window</td>
+                    </tr>
+                    <tr>
+                      <td>F10</td>
+                      <td>Activate the menu bar in the current window</td>
+                    </tr>
+                    <tr>
+                      <td>Shift + F10</td>
+                      <td>Display the context menu for the selected item</td>
+                    </tr>
+                    <tr>
+                      <td>Alt + Space</td>
+                      <td>Open the shortcut menu for the active window</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + Number (1-8)</td>
+                      <td>Change the view</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Number (1-8)</td>
+                      <td>Change the view</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + Arrow Key</td>
+                      <td>Select a block of text</td>
+                    </tr>
+                    <tr>
+                      <td>Shift + Arrow Key</td>
+                      <td>Select multiple items</td>
+                    </tr>                                
+             </tbody>
+         </table>
+          <br>
+
+    
+ <hr> <br>
+      <p class="indented-paragraph">After mastering these shortcuts, you'll navigate Microsoft Edge like a pro, boosting your productivity and efficiency. Remember to practice regularly to integrate them seamlessly into your workflow. Additionally, consider customizing shortcuts to suit your preferences and workflow better. Happy browsing!</p>
+    <br>
+    </body>        
+
+
+
+<footer>
+    <div class="footer-content">
+        <ul class="footer-links">
+            <li><a href="Homepage.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#news">Latest News</a></li>
+        </ul>
+        <ul class="social-icons">
+            <li><a href="https://www.facebook.com/profile.php?id=100015198880002"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/RAFI09925204"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/rafi-s-b-m-a3492a265/"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.instagram.com/rafi_s_b_m/"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <div class="subscribe-form">
+            <input type="email" placeholder="Subscribe to our newsletter">
+            <button type="button">Subscribe</button>
+        </div>
+        <p>&copy; 2024 Shortcut Sensei. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.main-nav ul').classList.toggle('show');
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortcut Sensei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .main-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-nav ul li {
+            position: relative;
+        }
+
+        .main-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .main-nav ul li a:hover {
+            background-color: #444;
+            border-radius: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 5px 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 20px;
+            margin-right: 10px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-container button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #6a1b9a;
+        }
+
+        .search-container button i {
+            color: #fff;
+        }
+
+         /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .search-container, .menu-toggle {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-container input[type="text"] {
+                width: 100%;
+            }
+
+            .features .feature, .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Search table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            background-color: #fff;
+            overflow: hidden; /* Ensures that curved corners are applied */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #2cba19;
+            color: #333;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+        .indented-paragraph {
+        margin-left: 11.5%; /* Adjust the value 165px as needed */
+        margin-right: 4.4%;  /*440 px */
+    }
+    .my-custom-class {
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Vertically center items */
+        }
+       .image{
+        width: 1000px;
+        height: 500px;
+        margin-left: 165px;
+
+       }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .footer-links li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons li {
+            display: inline;
+        }
+
+        .social-icons li a {
+            color: #fff;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .social-icons li a:hover {
+            color: #6a1b9a;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .subscribe-form input[type="email"] {
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1em;
+        }
+
+        .subscribe-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #6a1b9a;
+        }
+
+        footer p {
+            margin: 20px 0 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                flex-direction: column;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .features .feature,
+            .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .search-container input[type="text"] {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="Homepage.html">Shortcut Sensei</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="Homepage.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="https://www.instagram.com/rafi_s_b_m/">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button type="button" onclick="searchShortcuts()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <br>
+    <h1 style="text-align: left; margin-left: 165px;font-size: 40px;">Shortcuts for Visual Studio</h1>
+    <p class="indented-paragraph"> Welcome to Shortcut Sensei's guide to Visual Studio Code (VS Code) shortcuts! Whether you're a seasoned developer or just getting started with coding, mastering keyboard shortcuts can turbocharge your workflow in VS Code. Below, you'll find a comprehensive list of shortcuts categorized for quick reference. Dive in and discover how to navigate, edit, and debug your code with lightning speed!</p>
+
+    <div class="my-custom-class">
+        <img src="Visual_Studio.png" alt="Visual Studio" class="image">
+    </div>    
+
+      <br>
+  
+      <h2 class="indented-paragraph">General</h2>
+  
+      <table>
+          <thead>
+              <tr>
+                  <th style="color: #fff;">Key Combination</th>
+                  <th style="color: #fff;">Description</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Ctrl+Shift+P, F1</td>
+                  <td>Show Command Palette</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+P</td>
+                  <td>Quick Open, Go to File…</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+N</td>
+                  <td>New window/instance</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+W</td>
+                  <td>Close window/instance</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+,</td>
+                  <td>User Settings</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K Ctrl+S</td>
+                  <td>Keyboard Shortcuts</td>
+              </tr>
+          </tbody>
+      </table>  <br>
+  
+      <!--from here the second part-->
+      <h2 class="indented-paragraph">Basic Editing Shortcuts</h2>
+  
+      <table>
+        <thead>
+          <tr>
+              <th style="color: #fff;">Key Combination</th>
+              <th style="color: #fff;">Description</th>
+          </tr>
+      </thead>
+          <tbody>
+              <tr>
+                  <td>Ctrl+X</td>
+                  <td>Cut line (empty selection)</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+C</td>
+                  <td>Copy line (empty selection)</td>
+              </tr>
+              <tr>
+                  <td>Alt+ ↑ / ↓</td>
+                  <td>Move line up/down</td>
+              </tr>
+              <tr>
+                  <td>Shift+Alt + ↓ / ↑</td>
+                  <td>Copy line up/down</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+K</td>
+                  <td>Delete line</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Enter</td>
+                  <td>Insert line below</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+Enter</td>
+                  <td>Insert line above</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+\</td>
+                  <td>Jump to matching bracket</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+] / [</td>
+                  <td>Indent/outdent line</td>
+              </tr>
+              <tr>
+                  <td>Home / End</td>
+                  <td>Go to beginning/end of line</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Home</td>
+                  <td>Go to beginning of file</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+End</td>
+                  <td>Go to end of file</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+↑ / ↓</td>
+                  <td>Scroll line up/down</td>
+              </tr>
+              <tr>
+                  <td>Alt+PgUp / PgDn</td>
+                  <td>Scroll page up/down</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+[</td>
+                  <td>Fold (collapse) region</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+]</td>
+                  <td>Unfold (uncollapse) region</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K Ctrl+[</td>
+                  <td>Fold (collapse) all subregions</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K Ctrl+]</td>
+                  <td>Unfold (uncollapse) all subregions</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K Ctrl+0</td>
+                  <td>Fold (collapse) all regions</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K Ctrl+J</td>
+                  <td>Unfold (uncollapse) all regions</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K Ctrl+C</td>
+                  <td>Add line comment</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K Ctrl+U</td>
+                  <td>Remove line comment</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+/</td>
+                  <td>Toggle line comment</td>
+              </tr>
+              <tr>
+                  <td>Shift+Alt+A</td>
+                  <td>Toggle block comment</td>
+              </tr>
+              <tr>
+                  <td>Alt+Z</td>
+                  <td>Toggle word wrap</td>
+              </tr>
+          </tbody>
+      </table>  <br>
+  
+      <!--from here the 3rd part-->
+     
+  
+          <h2 class="indented-paragraph">Navigation Shortcuts</h2>
+      
+          <table>
+              <thead>
+                  <tr>
+                      <th style="color: #fff;">Shortcut</th>
+                      <th style="color: #fff;">Description</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Ctrl+T</td>
+                      <td>Show all Symbols</td>
+                  </tr>
+                  <tr>
+                      <td>Ctrl+G</td>
+                      <td>Go to Line...</td>
+                  </tr>
+                  <tr>
+                      <td>Ctrl+P</td>
+                      <td>Go to File...</td>
+                  </tr>
+                  <tr>
+                      <td>Ctrl+Shift+O</td>
+                      <td>Go to Symbol...</td>
+                  </tr>
+                  <tr>
+                      <td>Ctrl+Shift+M</td>
+                      <td>Show Problems panel</td>
+                  </tr>
+                  <tr>
+                      <td>F8</td>
+                      <td>Go to next error or warning</td>
+                  </tr>
+                  <tr>
+                      <td>Shift+F8</td>
+                      <td>Go to previous error or warning</td>
+                  </tr>
+                  <tr>
+                      <td>Ctrl+Shift+Tab</td>
+                      <td>Navigate editor group history</td>
+                  </tr>
+                  <tr>
+                      <td>Alt+ ← / →</td>
+                      <td>Go back / forward</td>
+                  </tr>
+              </tbody>
+          </table>  <br>
+  
+          <!--from here 4th part-->
+  
+  
+      <h2 class="indented-paragraph">Search and Replace Shortcuts</h2>
+  
+      <table>
+          <thead>
+              <tr>
+                  <th style="color: #fff;">Shortcut</th>
+                  <th style="color: #fff;">Description</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Ctrl+F</td>
+                  <td>Find</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+H</td>
+                  <td>Replace</td>
+              </tr>
+              <tr>
+                  <td>F3 / Shift+F3</td>
+                  <td>Find next/previous</td>
+              </tr>
+              <tr>
+                  <td>Alt+Enter</td>
+                  <td>Select all occurrences of Find match</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+D</td>
+                  <td>Add selection to next Find match</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K Ctrl+D</td>
+                  <td>Move last selection to next Find match</td>
+              </tr>
+              <tr>
+                  <td>Alt+C / R / W</td>
+                  <td>Toggle case-sensitive / regex / whole word</td>
+              </tr>
+          </tbody>
+      </table>       <br>
+  
+      <!--from here the 5th part-->
+  
+      <h2 class="indented-paragraph">Multi-cursor and Selection Shortcuts</h2>
+  
+      <table>
+          <thead>
+              <tr>
+                  <th style="color: #fff;">Shortcut</th>
+                  <th style="color: #fff;">Description</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Alt+Click</td>
+                  <td>Insert cursor</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Alt+ ↑ / ↓</td>
+                  <td>Insert cursor above / below</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+U</td>
+                  <td>Undo last cursor operation</td>
+              </tr>
+              <tr>
+                  <td>Shift+Alt+I</td>
+                  <td>Insert cursor at end of each line selected</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+L</td>
+                  <td>Select current line</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+L</td>
+                  <td>Select all occurrences of current selection</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+F2</td>
+                  <td>Select all occurrences of current word</td>
+              </tr>
+              <tr>
+                  <td>Shift+Alt+→</td>
+                  <td>Expand selection</td>
+              </tr>
+              <tr>
+                  <td>Shift+Alt+←</td>
+                  <td>Shrink selection</td>
+              </tr>
+              <tr>
+                  <td>Shift+Alt + (drag mouse)</td>
+                  <td>Column (box) selection</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+Alt + (arrow key)</td>
+                  <td>Column (box) selection</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+Alt +PgUp/PgDn</td>
+                  <td>Column (box) selection page up/down</td>
+              </tr>
+          </tbody>
+      </table>       <br>
+  
+      <!--from here the 6th part-->
+  
+  
+      <h2 class="indented-paragraph">Rich Languages Editing Shortcuts</h2>
+  
+      <table>
+          <thead>
+              <tr>
+                  <th style="color: #fff;">Shortcut</th>
+                  <th style="color: #fff;">Description</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Ctrl+Space, Ctrl+I</td>
+                  <td>Trigger suggestion</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+Space</td>
+                  <td>Trigger parameter hints</td>
+              </tr>
+              <tr>
+                  <td>Shift+Alt+F</td>
+                  <td>Format document</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K Ctrl+F</td>
+                  <td>Format selection</td>
+              </tr>
+              <tr>
+                  <td>F12</td>
+                  <td>Go to Definition</td>
+              </tr>
+              <tr>
+                  <td>Alt+F12</td>
+                  <td>Peek Definition</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K F12</td>
+                  <td>Open Definition to the side</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+.</td>
+                  <td>Quick Fix</td>
+              </tr>
+              <tr>
+                  <td>Shift+F12</td>
+                  <td>Show References</td>
+              </tr>
+              <tr>
+                  <td>F2</td>
+                  <td>Rename Symbol</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K Ctrl+X</td>
+                  <td>Trim trailing whitespace</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K M</td>
+                  <td>Change file language</td>
+              </tr>
+          </tbody>
+      </table>      <br>
+  
+      <!--7th part -->
+  
+      <h2 class="indented-paragraph">Editor Management Shortcuts</h2>
+  
+      <table>
+          <thead>
+              <tr>
+                  <th style="color: #fff;">Shortcut</th>
+                  <th style="color: #fff;">Description</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Ctrl+F4, Ctrl+W</td>
+                  <td>Close editor</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K F</td>
+                  <td>Close folder</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+\</td>
+                  <td>Split editor</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+1 / 2 / 3</td>
+                  <td>Focus into 1st, 2nd or 3rd editor group</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K Ctrl+ ←/→</td>
+                  <td>Focus into previous/next editor group</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+PgUp / PgDn</td>
+                  <td>Move editor left/right</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K ← / →</td>
+                  <td>Move active editor group</td>
+              </tr>
+          </tbody>
+      </table>  <br>
+  
+      <!-- 8th part-->
+  
+  
+      <h2 class="indented-paragraph">File Management Shortcuts</h2>
+  
+      <table>
+          <thead>
+              <tr>
+                  <th style="color: #fff;">Shortcut</th>
+                  <th style="color: #fff;">Description</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Ctrl+N</td>
+                  <td>New File</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+O</td>
+                  <td>Open File...</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+S</td>
+                  <td>Save</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+S</td>
+                  <td>Save As...</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K S</td>
+                  <td>Save All</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+F4</td>
+                  <td>Close</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K Ctrl+W</td>
+                  <td>Close All</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+T</td>
+                  <td>Reopen closed editor</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K Enter</td>
+                  <td>Keep preview mode editor open</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Tab</td>
+                  <td>Open next</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+Tab</td>
+                  <td>Open previous</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K P</td>
+                  <td>Copy path of active file</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K R</td>
+                  <td>Reveal active file in Explorer</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K O</td>
+                  <td>Show active file in new window/instance</td>
+              </tr>
+          </tbody>
+      </table> <br>
+  
+  <!-- 9th part-->
+  
+  
+      <h2 class="indented-paragraph">Display Shortcuts</h2>
+  
+      <table>
+          <thead>
+              <tr>
+                  <th style="color: #fff;">Shortcut</th>
+                  <th style="color: #fff;">Description</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>F11</td>
+                  <td>Toggle full screen</td>
+              </tr>
+              <tr>
+                  <td>Shift+Alt+0</td>
+                  <td>Toggle editor layout (horizontal/vertical)</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+ = / -</td>
+                  <td>Zoom in/out</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+B</td>
+                  <td>Toggle Sidebar visibility</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+E</td>
+                  <td>Show Explorer / Toggle focus</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+F</td>
+                  <td>Show Search</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+G</td>
+                  <td>Show Source Control</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+D</td>
+                  <td>Show Debug</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+X</td>
+                  <td>Show Extensions</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+H</td>
+                  <td>Replace in files</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+J</td>
+                  <td>Toggle Search details</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+U</td>
+                  <td>Show Output panel</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+V</td>
+                  <td>Open Markdown preview</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K V</td>
+                  <td>Open Markdown preview to the side</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K Z</td>
+                  <td>Zen Mode (Esc Esc to exit)</td>
+              </tr>
+          </tbody>
+      </table>         <br>
+  
+  <!--10 th part-->
+  
+  
+      <h2 class="indented-paragraph">Debug Shortcuts</h2>
+  
+      <table>
+          <thead>
+              <tr>
+                  <th style="color: #fff;">Shortcut</th>
+                  <th style="color: #fff;">Description</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>F9</td>
+                  <td>Toggle breakpoint</td>
+              </tr>
+              <tr>
+                  <td>F5</td>
+                  <td>Start/Continue</td>
+              </tr>
+              <tr>
+                  <td>Shift+F5</td>
+                  <td>Stop</td>
+              </tr>
+              <tr>
+                  <td>F11 / Shift+F11</td>
+                  <td>Step into/out</td>
+              </tr>
+              <tr>
+                  <td>F10</td>
+                  <td>Step over</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+K Ctrl+I</td>
+                  <td>Show hover</td>
+              </tr>
+          </tbody>
+      </table>         <br>
+  
+      <!-- 11th part-->
+  
+  
+      <h2 class="indented-paragraph">Integrated Terminal Shortcuts</h2>
+  
+      <table>
+          <thead>
+              <tr>
+                  <th style="color: #fff;">Shortcut</th>
+                  <th style="color: #fff;">Description</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Ctrl+`</td>
+                  <td>Show integrated terminal</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Shift+`</td>
+                  <td>Create new terminal</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+C</td>
+                  <td>Copy selection</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+V</td>
+                  <td>Paste into active terminal</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+↑ / ↓</td>
+                  <td>Scroll up/down</td>
+              </tr>
+              <tr>
+                  <td>Shift+PgUp / PgDn</td>
+                  <td>Scroll page up/down</td>
+              </tr>
+              <tr>
+                  <td>Ctrl+Home / End</td>
+                  <td>Scroll to top/bottom</td>
+              </tr>
+          </tbody>
+      </table> <br>
+      <hr>
+
+      <p class="indented-paragraph"> <b>Congratulations</b> on delving into the world of VS Code shortcuts! Remember, the more you integrate these shortcuts into your coding routine, the more seamless and efficient your development process will become. Keep practicing, and soon you'll be navigating your codebase like a true ninja. Stay tuned for more shortcut guides and happy coding!</p> <br> 
+    </body>        
+
+
+
+<footer>
+    <div class="footer-content">
+        <ul class="footer-links">
+            <li><a href="Homepage.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#news">Latest News</a></li>
+        </ul>
+        <ul class="social-icons">
+            <li><a href="https://www.facebook.com/profile.php?id=100015198880002"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/RAFI09925204"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/rafi-s-b-m-a3492a265/"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.instagram.com/rafi_s_b_m/"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <div class="subscribe-form">
+            <input type="email" placeholder="Subscribe to our newsletter">
+            <button type="button">Subscribe</button>
+        </div>
+        <p>&copy; 2024 Shortcut Sensei. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.main-nav ul').classList.toggle('show');
+    });
+</script>
+
+</body>
+</html>

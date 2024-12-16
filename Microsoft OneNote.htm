@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortcut Sensei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .main-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-nav ul li {
+            position: relative;
+        }
+
+        .main-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .main-nav ul li a:hover {
+            background-color: #444;
+            border-radius: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 5px 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 20px;
+            margin-right: 10px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-container button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #6a1b9a;
+        }
+
+        .search-container button i {
+            color: #fff;
+        }
+
+         /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .search-container, .menu-toggle {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-container input[type="text"] {
+                width: 100%;
+            }
+
+            .features .feature, .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Search table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            background-color: #fff;
+            overflow: hidden; /* Ensures that curved corners are applied */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #2cba19;
+            color: #333;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+        .indented-paragraph {
+        margin-left: 11.5%; /* Adjust the value 165px as needed */
+        margin-right: 4.4%;  /*440 px */
+    }
+    .my-custom-class {
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Vertically center items */
+        }
+       .image{
+        width: 1000px;
+        height: 500px;
+        margin-left: 165px;
+
+       }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .footer-links li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons li {
+            display: inline;
+        }
+
+        .social-icons li a {
+            color: #fff;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .social-icons li a:hover {
+            color: #6a1b9a;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .subscribe-form input[type="email"] {
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1em;
+        }
+
+        .subscribe-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #6a1b9a;
+        }
+
+        footer p {
+            margin: 20px 0 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                flex-direction: column;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .features .feature,
+            .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .search-container input[type="text"] {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="Homepage.html">Shortcut Sensei</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="Homepage.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="https://www.instagram.com/rafi_s_b_m/">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button type="button" onclick="searchShortcuts()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <br>
+    <h1 style="text-align: left; margin-left: 10.5%;font-size: 40px;">Top 72 Shortcuts for OneNote</h1>
+    <p class="indented-paragraph"> Transform your creative vision into reality with Adobe Photoshop. From photo editing to graphic design, Photoshop offers unparalleled versatility and precision, empowering you to bring your ideas to life.
+
+    </p>
+
+    <div class="my-custom-class">
+        <img src="Microsoft OneNote.avif" alt="Microsoft OneNote" class="image">
+    </div>    
+
+    <br>
+
+<p class="indented-paragraph" style="line-height: 26px;"> <b>Discover the Possibilities</b><br>
+
+    Unleash your creativity and explore endless possibilities with Adobe Photoshop. Whether you're a professional designer, photographer, or enthusiast, Photoshop provides the tools you need to turn imagination into stunning visuals.
+    </p>
+      <br>
+  
+
+  <p class="indented-paragraph"></p>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">General Shortcuts</h2>
+
+  <p class="indented-paragraph">
+
+    Essential shortcuts for common actions like creating, opening, saving, and editing notebooks.</p>
+
+    
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>Ctrl + N</td>
+              <td>Create a new notebook</td>
+            </tr>
+            <tr>
+              <td>Ctrl + O</td>
+              <td>Open an existing notebook</td>
+            </tr>
+            <tr>
+              <td>Ctrl + S</td>
+              <td>Save changes to the current notebook</td>
+            </tr>
+            <tr>
+              <td>Ctrl + P</td>
+              <td>Print the current page or notebook</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Z</td>
+              <td>Undo the last action</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Y</td>
+              <td>Redo the last undone action</td>
+            </tr>
+            <tr>
+              <td>Ctrl + A</td>
+              <td>Select all items on the current page</td>
+            </tr>
+            <tr>
+              <td>Ctrl + X</td>
+              <td>Cut the selected item</td>
+            </tr>
+            <tr>
+              <td>Ctrl + C</td>
+              <td>Copy the selected item</td>
+            </tr>
+            <tr>
+              <td>Ctrl + V</td>
+              <td>Paste the copied or cut item</td>
+            </tr>
+            <tr>
+              <td>Ctrl + F</td>
+              <td>Open the Find dialog box to search for text</td>
+            </tr>
+            <tr>
+              <td>Ctrl + H</td>
+              <td>Open the Replace dialog box to search and replace text</td>
+            </tr>
+            <tr>
+              <td>Ctrl + G</td>
+              <td>Go to a specific page or section</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Shift + F</td>
+              <td>Open the Format Painter to copy formatting</td>
+            </tr>
+            <tr>
+              <td>Ctrl + B</td>
+              <td>Bold the selected text</td>
+            </tr>
+            <tr>
+              <td>Ctrl + I</td>
+              <td>Italicize the selected text</td>
+            </tr>
+            <tr>
+              <td>Ctrl + U</td>
+              <td>Underline the selected text</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Shift + N</td>
+              <td>Create a new page</td>
+            </tr>
+            <tr>
+              <td>Ctrl + D</td>
+              <td>Dock the OneNote window to the desktop</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Alt + D</td>
+              <td>Undock the OneNote window from the desktop</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Alt + M</td>
+              <td>Minimize the OneNote window to the taskbar</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Alt + L</td>
+              <td>Dock all OneNote windows</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Alt + V</td>
+              <td>Paste and match the formatting of the surrounding text</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Alt + T</td>
+              <td>Move focus to the Tag Summary pane</td>
+            </tr>    
+        </tbody>
+    </table>
+  <br>
+
+  <!-- 2nd part -->
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Formatting Shortcuts</h2>
+
+  <p class="indented-paragraph">
+    Shortcuts for applying formatting styles, such as headings, font sizes, and tags, to your notes.</p>
+
+
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <td>Ctrl + Shift + P</td>
+                  <td>Insert a page break</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + 1</td>
+                  <td>Apply the Heading 1 style</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + 2</td>
+                  <td>Apply the Heading 2 style</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + 3</td>
+                  <td>Apply the Heading 3 style</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + &gt;</td>
+                  <td>Increase the font size</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + &lt;</td>
+                  <td>Decrease the font size</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Alt + 1</td>
+                  <td>Apply the To Do tag</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Alt + 2</td>
+                  <td>Apply the Important tag</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Alt + 3</td>
+                  <td>Apply the Question tag</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Alt + 4</td>
+                  <td>Apply the Star tag</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Alt + 5</td>
+                  <td>Apply the Critical tag</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Alt + 6</td>
+                  <td>Apply the Contact tag</td>
+                </tr>                      
+        </tbody>
+    </table>
+     <br>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Navigation Shortcuts</h2>
+
+  <p class="indented-paragraph">
+
+    Handy shortcuts for navigating between pages, sections, and notebooks quickly.
+</p>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <td>Alt + Shift + N</td>
+                  <td>Open the navigation bar</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Home</td>
+                  <td>Go to the first page in the current section</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + End</td>
+                  <td>Go to the last page in the current section</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Alt + Home</td>
+                  <td>Go to the first page in the notebook</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Alt + End</td>
+                  <td>Go to the last page in the notebook</td>
+                </tr>                    
+        </tbody>
+    </table>
+    <br>
+
+
+<h2 style="text-align: left; margin-left: 10.5%;">Insert Shortcuts</h2>
+
+<p class="indented-paragraph">
+
+    Shortcuts for inserting new pages, sections, section groups, and tags into your notebooks.
+
+</p>
+
+  <table>
+   
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <td>Alt + N</td>
+                  <td>Insert a new page</td>
+                </tr>
+                <tr>
+                  <td>Alt + H, N</td>
+                  <td>Insert a new section</td>
+                </tr>
+                <tr>
+                  <td>Alt + H, P</td>
+                  <td>Insert a new section group</td>
+                </tr>
+                <tr>
+                  <td>Alt + H, T</td>
+                  <td>Insert a new tag</td>
+                </tr>                                 
+        </tbody>
+    </table>
+     <br>
+
+
+     <h2 style="text-align: left; margin-left: 10.5%;">View Shortcuts</h2>
+
+     <p class="indented-paragraph">
+        Shortcuts for managing the appearance of your OneNote interface, such as toggling the navigation bar and docking page tabs.
+</p>
+   
+      
+       <table border="1">
+           <thead>
+               <tr>
+                   <th style="color: #fff;">Key Combination</th>
+                   <th style="color: #fff;">Description</th>
+               </tr>
+           </thead>
+           <tbody>
+                <tr>
+                  <td>Ctrl + M</td>
+                  <td>Toggle the navigation bar</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + Tab</td>
+                  <td>Switch between the notebook pane, section pane, and page pane</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + R</td>
+                  <td>Dock the page tab to the right side</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + L</td>
+                  <td>Dock the page tab to the left side</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + E</td>
+                  <td>Dock the page tab to the bottom</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + W</td>
+                  <td>Close the current notebook, section, or page</td>
+                </tr>                                                                                                      
+           </tbody>
+       </table>
+        <br>       
+
+     
+     <h2 style="text-align: left; margin-left: 10.5%;">Tag Shortcuts</h2>
+
+     <p class="indented-paragraph">
+     
+        Shortcuts for applying specific tags to your notes, helping you organize and categorize your content efficiently.
+
+
+
+    </p>
+
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                    <tr>
+                      <td>Ctrl + Shift + 1</td>
+                      <td>Apply the "Critical" tag</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + 2</td>
+                      <td>Apply the "Contact" tag</td>
+                    </tr>              
+             </tbody>
+             </table>        
+          <br>
+
+
+     <h2 style="text-align: left; margin-left: 10.5%;">Table Shortcuts</h2>
+
+     <p class="indented-paragraph">
+
+        Shortcuts for working with tables, including moving between cells, merging and splitting cells, and more.
+
+
+        </p>
+     
+
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                    <tr>
+                      <td>Tab</td>
+                      <td>Move to the next cell</td>
+                    </tr>
+                    <tr>
+                      <td>Shift + Tab</td>
+                      <td>Move to the previous cell</td>
+                    </tr>
+                    <tr>
+                      <td>Enter</td>
+                      <td>Move to the next row</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Alt + M</td>
+                      <td>Merge selected cells</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Alt + S</td>
+                      <td>Split selected cells</td>
+                    </tr>      
+             </tbody>
+         </table>
+          <br>
+
+
+          <h2 style="text-align: left; margin-left: 10.5%;">Drawing Shortcuts</h2>
+
+          <p class="indented-paragraph">
+        
+            Shortcuts for drawing and sketching in your notes, including converting handwriting to text and creating screen clippings.</p>
+        
+           
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th style="color: #fff;">Key Combination</th>
+                        <th style="color: #fff;">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                          <td>Ctrl + P</td>
+                          <td>Convert handwriting to text</td>
+                        </tr>
+                        <tr>
+                          <td>Ctrl + Space</td>
+                          <td>Show or hide the pens</td>
+                        </tr>
+                        <tr>
+                          <td>Ctrl + 5</td>
+                          <td>Create a screen clipping</td>
+                        </tr>                                                     
+                </tbody>
+            </table>
+             <br>        
+
+
+             <h2 style="text-align: left; margin-left: 10.5%;">Additional Shortcuts</h2>
+
+             <p class="indented-paragraph">
+             
+                Extra shortcuts for copying formatting, inserting dates and times, creating tables and pictures, and accessing the Help pane.
+            </p>
+             
+             
+                 <table border="1">
+                     <thead>
+                         <tr>
+                             <th style="color: #fff;">Key Combination</th>
+                             <th style="color: #fff;">Description</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                            <tr>
+                              <td>Ctrl + Shift + C</td>
+                              <td>Copy the formatting of the selected text</td>
+                            </tr>
+                            <tr>
+                              <td>Ctrl + Shift + V</td>
+                              <td>Paste the formatting of the copied text</td>
+                            </tr>
+                            <tr>
+                              <td>Alt + Shift + D</td>
+                              <td>Insert the current date</td>
+                            </tr>
+                            <tr>
+                              <td>Alt + Shift + T</td>
+                              <td>Insert the current time</td>
+                            </tr>
+                            <tr>
+                              <td>Ctrl + Shift + T</td>
+                              <td>Insert a table</td>
+                            </tr>
+                            <tr>
+                              <td>Ctrl + Alt + P</td>
+                              <td>Insert a picture from a file</td>
+                            </tr>
+                            <tr>
+                              <td>Ctrl + Shift + S</td>
+                              <td>Create a new subpage</td>
+                            </tr>
+                            <tr>
+                              <td>Ctrl + Shift + E</td>
+                              <td>Create a new email message with the current page as an attachment</td>
+                            </tr>
+                            <tr>
+                              <td>Ctrl + Alt + H</td>
+                              <td>Open the Help pane</td>
+                            </tr>                                                             
+                     </tbody>
+                 </table>
+                  <br>                          
+
+     
+
+ <hr> <br>
+      <p class="indented-paragraph">After mastering these shortcuts, you'll navigate Microsoft Edge like a pro, boosting your productivity and efficiency. Remember to practice regularly to integrate them seamlessly into your workflow. Additionally, consider customizing shortcuts to suit your preferences and workflow better. Happy browsing!</p>
+    <br>
+    </body>        
+
+
+
+<footer>
+    <div class="footer-content">
+        <ul class="footer-links">
+            <li><a href="Homepage.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#news">Latest News</a></li>
+        </ul>
+        <ul class="social-icons">
+            <li><a href="https://www.facebook.com/profile.php?id=100015198880002"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/RAFI09925204"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/rafi-s-b-m-a3492a265/"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.instagram.com/rafi_s_b_m/"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <div class="subscribe-form">
+            <input type="email" placeholder="Subscribe to our newsletter">
+            <button type="button">Subscribe</button>
+        </div>
+        <p>&copy; 2024 Shortcut Sensei. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.main-nav ul').classList.toggle('show');
+    });
+</script>
+
+</body>
+</html>

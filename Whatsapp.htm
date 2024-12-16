@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortcut Sensei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .main-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-nav ul li {
+            position: relative;
+        }
+
+        .main-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .main-nav ul li a:hover {
+            background-color: #444;
+            border-radius: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 5px 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 20px;
+            margin-right: 10px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-container button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #6a1b9a;
+        }
+
+        .search-container button i {
+            color: #fff;
+        }
+
+         /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .search-container, .menu-toggle {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-container input[type="text"] {
+                width: 100%;
+            }
+
+            .features .feature, .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Search table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            background-color: #fff;
+            overflow: hidden; /* Ensures that curved corners are applied */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #2cba19;
+            color: #333;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+        .indented-paragraph {
+        margin-left: 11.5%; /* Adjust the value 165px as needed */
+        margin-right: 4.4%;  /*440 px */
+    }
+    .my-custom-class {
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Vertically center items */
+        }
+       .image{
+        width: 1000px;
+        height: 500px;
+        margin-left: 165px;
+
+       }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .footer-links li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons li {
+            display: inline;
+        }
+
+        .social-icons li a {
+            color: #fff;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .social-icons li a:hover {
+            color: #6a1b9a;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .subscribe-form input[type="email"] {
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1em;
+        }
+
+        .subscribe-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #6a1b9a;
+        }
+
+        footer p {
+            margin: 20px 0 0;
+        }
+
+         /* for ordered list of items*/
+
+         ol {
+
+margin-left: 11.5%; /* Adjust the value 165px as needed */
+margin-right: 4.4%;  /*440 px */
+
+}
+
+ol li {
+margin-bottom: 1%; /* Margin between list items */
+}
+
+ul {
+
+margin-left: 11.5%; /* Adjust the value 165px as needed */
+margin-right: 4.4%;  /*440 px */
+
+}
+
+ul li {
+margin-bottom: 1.3%; /* Margin between list items */
+}
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                flex-direction: column;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .features .feature,
+            .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .search-container input[type="text"] {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="Homepage.html">Shortcut Sensei</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="Homepage.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="https://www.instagram.com/rafi_s_b_m/">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button type="button" onclick="searchShortcuts()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <br>
+    <h1 style="text-align: left; margin-left: 8.5%;font-size: 40px;">Top 93 Shortcuts for Whatsapp</h1>
+    <p class="indented-paragraph">
+        
+
+        <h3 class="indented-paragraph">Welcome to WhatsApp Shortcuts!</h3>
+
+        <p class="indented-paragraph" style="line-height: 22px;">
+        WhatsApp is one of the most popular messaging applications worldwide, offering users a seamless experience for text messaging, voice, and video calls. But did you know that you can make your WhatsApp experience even more efficient with keyboard shortcuts? Whether you are a power user or someone who wants to save a few seconds with every interaction, these shortcuts can greatly enhance your productivity.<br>
+
+    </p>
+
+    <div class="my-custom-class">
+        <img src="Whatsapp.jpg" alt="WhatsApp" class="image">
+    </div>    
+
+    <br>
+
+<p class="indented-paragraph" style="line-height: 26px;"> <b>Why Use Shortcuts?</b>
+
+  <ul style="line-height: 21px;">
+
+    <li><b>Speed : </b>Perform tasks faster without navigating through menus.</li>
+    <li><b>Efficiency : </b>Streamline your workflow and reduce repetitive actions.</li>
+    <li><b>Productivity : </b>Focus more on your conversations and less on finding features.</li>
+
+  </ul>
+
+
+    </p>
+    <p class="indented-paragraph" style="line-height: 21px;">Explore the comprehensive list of WhatsApp shortcuts below, sorted into categories for easy reference. Master these shortcuts to become a WhatsApp pro!</p>
+
+  
+
+  <p class="indented-paragraph"></p>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Chatting Shortcuts</h2>
+
+  <p class="indented-paragraph">
+
+    These shortcuts help you navigate through your chats efficiently, allowing you to quickly switch between conversations, search for specific messages, and manage your chat history.</p>
+
+    
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+          <tr>
+              <td>Ctrl + N</td>
+              <td>New Chat</td>
+          </tr>
+          <tr>
+              <td>Ctrl + F</td>
+              <td>Search</td>
+          </tr>
+          <tr>
+              <td>Ctrl + P</td>
+              <td>Previous Chat</td>
+          </tr>
+          <tr>
+              <td>Ctrl + N</td>
+              <td>Next Chat</td>
+          </tr>
+          <tr>
+              <td>Ctrl + Shift + M</td>
+              <td>Mute Chat</td>
+          </tr>
+          <tr>
+              <td>Ctrl + Shift + H</td>
+              <td>Archive Chat</td>
+          </tr>
+          <tr>
+              <td>Ctrl + Shift + D</td>
+              <td>Delete Chat</td>
+          </tr>
+          <tr>
+              <td>Ctrl + Shift + U</td>
+              <td>Mark as Unread</td>
+          </tr>
+          <tr>
+              <td>Ctrl + R</td>
+              <td>Reply to Message</td>
+          </tr>
+          <tr>
+              <td>Ctrl + C</td>
+              <td>Copy Selected Message</td>
+          </tr>
+          <tr>
+              <td>Ctrl + X</td>
+              <td>Cut Selected Message</td>
+          </tr>
+          <tr>
+              <td>Ctrl + V</td>
+              <td>Paste Message</td>
+          </tr>      
+        </tbody>
+    </table>
+  <br>
+
+  <!-- 2nd part -->
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Formatting Shortcuts</h2>
+
+  <p class="indented-paragraph">
+    With these shortcuts, you can format your messages easily by making text bold, italic, or strikethrough, changing font size and color, and more, enhancing the visual appeal of your messages.</p>
+
+
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ctrl + B</td>
+                <td>Bold Text</td>
+            </tr>
+            <tr>
+                <td>Ctrl + I</td>
+                <td>Italic Text</td>
+            </tr>
+            <tr>
+                <td>Ctrl + S</td>
+                <td>Strikethrough Text</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + M</td>
+                <td>Monospace Text</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + +</td>
+                <td>Increase Font Size</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + -</td>
+                <td>Decrease Font Size</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + C</td>
+                <td>Change Font Color</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + B</td>
+                <td>Change Background Color</td>
+            </tr>                 
+        </tbody>
+    </table>
+     <br>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Navigation Shortcuts</h2>
+
+  <p class="indented-paragraph">
+
+    These shortcuts streamline your navigation within the WhatsApp interface, enabling you to jump to the beginning or end of your chat list, scroll through chats, and navigate through your chat tabs swiftly.
+</p>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+              <tr>
+                  <td>Ctrl + Home</td>
+                  <td>Go to First Chat</td>
+              </tr>
+              <tr>
+                  <td>Ctrl + End</td>
+                  <td>Go to Last Chat</td>
+              </tr>
+              <tr>
+                  <td>Page Up</td>
+                  <td>Scroll Up</td>
+              </tr>
+              <tr>
+                  <td>Page Down</td>
+                  <td>Scroll Down</td>
+              </tr>
+              <tr>
+                  <td>Home</td>
+                  <td>Scroll to Top</td>
+              </tr>
+              <tr>
+                  <td>End</td>
+                  <td>Scroll to Bottom</td>
+              </tr>                  
+        </tbody>
+    </table>
+    <br>
+
+
+<h2 style="text-align: left; margin-left: 10.5%;">Sending Shortcuts</h2>
+
+<p class="indented-paragraph">
+
+  Send messages, attachments, images, videos, voice messages, documents, and your current location swiftly using these shortcuts, making communication more efficient.</p>
+
+  <table>
+   
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Enter</td>
+                <td>Send Message</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Enter</td>
+                <td>Send Message (without Enter)</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + V</td>
+                <td>Send Voice Message</td>
+            </tr>
+            <tr>
+                <td>Ctrl + A</td>
+                <td>Send Attachment</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + I</td>
+                <td>Send Image</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + V</td>
+                <td>Send Video</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + D</td>
+                <td>Send Document</td>
+            </tr>
+            <tr>
+                <td>Ctrl + Shift + L</td>
+                <td>Send Location</td>
+            </tr>                            
+        </tbody>
+    </table>
+     <br>
+
+
+     <h2 style="text-align: left; margin-left: 10.5%;">Emoticons and Emoji Shortcuts</h2>
+
+     <p class="indented-paragraph">
+      Express yourself with emoticons and emojis using these shortcuts, allowing you to access a wide range of expressive icons quickly.
+</p>
+   
+      
+       <table border="1">
+           <thead>
+               <tr>
+                   <th style="color: #fff;">Key Combination</th>
+                   <th style="color: #fff;">Description</th>
+               </tr>
+           </thead>
+           <tbody>
+              <tr>
+                  <td>Ctrl + E</td>
+                  <td>Open Emoticons Panel</td>
+              </tr>
+              <tr>
+                  <td>Ctrl + Shift + 1-9</td>
+                  <td>Insert Emoticon</td>
+              </tr>
+              <tr>
+                  <td>Ctrl + Shift + M</td>
+                  <td>Open Emoji Panel</td>
+              </tr>
+              <tr>
+                  <td>Ctrl + Shift + 1-9</td>
+                  <td>Insert Emoji</td>
+              </tr>                                                                             
+           </tbody>
+       </table>
+        <br>       
+
+     
+     <h2 style="text-align: left; margin-left: 10.5%;">Call Shortcuts</h2>
+
+     <p class="indented-paragraph">
+     
+         
+      Initiate voice or video calls with ease using these shortcuts, simplifying the process of connecting with your contacts via WhatsApp.
+
+    </p>
+
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                <tr>
+                    <td>Ctrl + Shift + A</td>
+                    <td>Start Voice Call</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Shift + V</td>
+                    <td>Start Video Call</td>
+                </tr>
+             </tbody>
+             </table>        
+          <br>
+
+     <h2 style="text-align: left; margin-left: 10.5%;">Group Chat Shortcuts</h2>
+
+     <p class="indented-paragraph">
+
+      Manage your group chats effortlessly with these shortcuts, facilitating tasks such as viewing group info, adding or removing participants, changing the group subject, and exiting groups.
+
+        </p>
+     
+
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                <tr>
+                    <td>Ctrl + G</td>
+                    <td>View Group Info</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Shift + P</td>
+                    <td>Add Participant</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Shift + R</td>
+                    <td>Remove Participant</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Shift + E</td>
+                    <td>Exit Group</td>
+                </tr>
+                <tr>
+                    <td>Ctrl + Shift + S</td>
+                    <td>Change Group Subject</td>
+                </tr>         
+             </tbody>
+         </table>
+          <br>
+
+
+          <h2 style="text-align: left; margin-left: 10.5%;">Status Shortcuts</h2>
+
+          <p class="indented-paragraph">
+        
+            View status updates posted by your contacts and update your own status seamlessly with these shortcuts, enhancing your status-sharing experience on WhatsApp.</p>
+        
+           
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th style="color: #fff;">Key Combination</th>
+                        <th style="color: #fff;">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ctrl + Shift + S</td>
+                        <td>View Status Updates</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Shift + U</td>
+                        <td>Update Status</td>
+                    </tr>                                                       
+                </tbody>
+            </table>
+             <br>        
+
+
+             <h2 style="text-align: left; margin-left: 10.5%;">Settings Shortcuts</h2>
+
+             <p class="indented-paragraph">
+             
+              Access WhatsApp settings and customize notification settings, chat backgrounds, and more efficiently using these shortcuts, optimizing your WhatsApp experience.
+
+            </p>
+             
+             
+                 <table border="1">
+                     <thead>
+                         <tr>
+                             <th style="color: #fff;">Key Combination</th>
+                             <th style="color: #fff;">Description</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                            <td>Ctrl + Alt + S</td>
+                            <td>Open Settings</td>
+                        </tr>
+                        <tr>
+                            <td>Ctrl + Alt + N</td>
+                            <td>Change Notification Settings</td>
+                        </tr>
+                        <tr>
+                            <td>Ctrl + Alt + B</td>
+                            <td>Change Chat Background</td>
+                        </tr>                                                               
+                     </tbody>
+                 </table>
+                  <br>                          
+
+
+             <h2 style="text-align: left; margin-left: 10.5%;">Miscellaneous Shortcuts</h2>
+
+             <p class="indented-paragraph">
+           
+              These shortcuts offer various additional functionalities, such as marking chats as read, viewing contact info, searching chats, toggling dark mode, and more, enhancing overall usability.</p>
+           
+              
+               <table border="1">
+                   <thead>
+                       <tr>
+                           <th style="color: #fff;">Key Combination</th>
+                           <th style="color: #fff;">Description</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                      <tr>
+                          <td>Ctrl + Shift + K</td>
+                          <td>Mark Chat as Read</td>
+                      </tr>
+                      <tr>
+                          <td>Ctrl + Shift + C</td>
+                          <td>Show Contact Info</td>
+                      </tr>
+                      <tr>
+                          <td>Ctrl + Alt + A</td>
+                          <td>Open Attachment Menu</td>
+                      </tr>
+                      <tr>
+                          <td>Ctrl + Q</td>
+                          <td>Quick Search in Chat</td>
+                      </tr>
+                      <tr>
+                          <td>Ctrl + Shift + Q</td>
+                          <td>Quick Search in Current Chat</td>
+                      </tr>
+                      <tr>
+                          <td>Ctrl + Shift + H</td>
+                          <td>Show Archived Chats</td>
+                      </tr>
+                      <tr>
+                          <td>Ctrl + Shift + D</td>
+                          <td>Toggle Dark Mode</td>
+                      </tr>   
+                      <tr>
+                        <td>Ctrl + Shift + K</td>
+                        <td>Mark Chat as Read</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Shift + C</td>
+                        <td>Show Contact Info</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Alt + A</td>
+                        <td>Open Attachment Menu</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Q</td>
+                        <td>Quick Search in Chat</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Shift + Q</td>
+                        <td>Quick Search in Current Chat</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Shift + H</td>
+                        <td>Show Archived Chats</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Shift + D</td>
+                        <td>Toggle Dark Mode</td>
+                    </tr>                                                    
+                   </tbody>
+               </table>
+                <br>       
+
+                <h2 style="text-align: left; margin-left: 10.5%;">Accessibility Shortcuts</h2>
+
+                <p class="indented-paragraph">
+              
+                  These shortcuts cater to users with accessibility needs, allowing them to listen to selected messages being read aloud, adjust voice speed for better comprehension, and navigate WhatsApp more comfortably.
+
+                </p>
+              
+                 
+                  <table border="1">
+                      <thead>
+                          <tr>
+                              <th style="color: #fff;">Key Combination</th>
+                              <th style="color: #fff;">Description</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Ctrl + Alt + R</td>
+                              <td>Read Aloud Selected Message</td>
+                          </tr>
+                          <tr>
+                              <td>Ctrl + Alt + +</td>
+                              <td>Increase Voice Speed</td>
+                          </tr>
+                          <tr>
+                              <td>Ctrl + Alt + -</td>
+                              <td>Decrease Voice Speed</td>
+                          </tr>   
+                                                                              
+                      </tbody>
+                  </table>
+                   <br>       
+
+                   <h2 style="text-align: left; margin-left: 10.5%;">Navigation and Selection Shortcuts</h2>
+
+                   <p class="indented-paragraph">
+                 
+                    Streamline your navigation and selection processes within WhatsApp with these shortcuts, enabling you to quickly switch between chat lists, select multiple messages, and navigate through chats efficiently.</p>
+                 
+                    
+                     <table border="1">
+                         <thead>
+                             <tr>
+                                 <th style="color: #fff;">Key Combination</th>
+                                 <th style="color: #fff;">Description</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                              <tr>
+                                  <td>Ctrl + Alt + 1</td>
+                                  <td>Go to Chat List</td>
+                              </tr>
+                              <tr>
+                                  <td>Ctrl + Alt + 2</td>
+                                  <td>Go to Status List</td>
+                              </tr>
+                              <tr>
+                                  <td>Ctrl + Alt + 3</td>
+                                  <td>Go to Calls List</td>
+                              </tr>
+                              <tr>
+                                  <td>Ctrl + Up Arrow</td>
+                                  <td>Go to Previous Chat</td>
+                              </tr>
+                              <tr>
+                                  <td>Ctrl + Down Arrow</td>
+                                  <td>Go to Next Chat</td>
+                              </tr>
+                              <tr>
+                                  <td>Shift + Up Arrow</td>
+                                  <td>Select Previous Chat</td>
+                              </tr>
+                              <tr>
+                                  <td>Shift + Down Arrow</td>
+                                  <td>Select Next Chat</td>
+                              </tr>
+                              <tr>
+                                  <td>Ctrl + Shift + A</td>
+                                  <td>Select All Messages</td>
+                              </tr>                                                                       
+                         </tbody>
+                     </table>
+                      <br>       
+
+
+                      <h2 style="text-align: left; margin-left: 10.5%;">Archive Management Shortcuts</h2>
+
+                      <p class="indented-paragraph">
+                    
+                        Manage your chat archives effortlessly using these shortcuts, facilitating tasks such as saving chats, exporting chat histories, opening files and folders, and printing chats, enhancing your archival experience on WhatsApp.</p>
+                    
+                       
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th style="color: #fff;">Key Combination</th>
+                                    <th style="color: #fff;">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ctrl + S</td>
+                                    <td>Save Chat</td>
+                                </tr>
+                                <tr>
+                                    <td>Ctrl + Shift + S</td>
+                                    <td>Export Chat</td>
+                                </tr>
+                                <tr>
+                                    <td>Ctrl + O</td>
+                                    <td>Open File</td>
+                                </tr>
+                                <tr>
+                                    <td>Ctrl + Shift + O</td>
+                                    <td>Open Folder</td>
+                                </tr>
+                                <tr>
+                                    <td>Ctrl + Shift + P</td>
+                                    <td>Print Chat</td>
+                                </tr>                                                   
+                            </tbody>
+                        </table>
+                         <br>      
+                         
+                         
+
+                         <h2 style="text-align: left; margin-left: 10.5%;">Notification Shortcuts</h2>
+
+                         <p class="indented-paragraph">
+                       
+                          Quickly manage your chat notifications using these shortcuts, marking chats as read or unread, replying to messages directly from notifications, archiving or deleting chats, and more, ensuring you stay on top of your conversations.
+
+
+         
+                         </p>
+                       
+                          
+                           <table border="1">
+                               <thead>
+                                   <tr>
+                                       <th style="color: #fff;">Key Combination</th>
+                                       <th style="color: #fff;">Description</th>
+                                   </tr>
+                               </thead>
+                               <tbody>
+                                  <tr>
+                                      <td>Alt + 1</td>
+                                      <td>Mark as Read</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Alt + 2</td>
+                                      <td>Mark as Unread</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Alt + 3</td>
+                                      <td>Reply</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Alt + 4</td>
+                                      <td>Archive Chat</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Alt + 5</td>
+                                      <td>Delete Chat</td>
+                                  </tr>
+                               </tbody>
+                           </table>
+                            <br>      
+
+
+                            <h2 style="text-align: left; margin-left: 10.5%;">Account Shortcuts</h2>
+
+                            <p class="indented-paragraph">
+                              Access and manage your WhatsApp account settings efficiently with these shortcuts, allowing you to view account information, access settings, backup chats, and download your data seamlessly.
+                            </p>
+                          
+                             
+                              <table border="1">
+                                  <thead>
+                                      <tr>
+                                          <th style="color: #fff;">Key Combination</th>
+                                          <th style="color: #fff;">Description</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td>Alt + A</td>
+                                          <td>View Account Info</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Alt + S</td>
+                                          <td>Settings</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Alt + B</td>
+                                          <td>Backup Chats</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Alt + D</td>
+                                          <td>Download Data</td>
+                                      </tr>                                                  
+                                  </tbody>
+                              </table>
+                               <br>      
+
+
+
+
+                               <h2 style="text-align: left; margin-left: 10.5%;">Privacy Shortcuts</h2>
+
+                               <p class="indented-paragraph">
+                             
+                                Ensure your privacy and security on WhatsApp using these shortcuts, accessing privacy settings to customize your account visibility, blocking unwanted contacts, and reporting users for inappropriate behavior.
+                               </p>
+                             
+                                
+                                 <table border="1">
+                                     <thead>
+                                         <tr>
+                                             <th style="color: #fff;">Key Combination</th>
+                                             <th style="color: #fff;">Description</th>
+                                         </tr>
+                                     </thead>
+                                     <tbody>
+                                        <tr>
+                                            <td>Alt + P</td>
+                                            <td>Privacy Settings</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alt + G</td>
+                                            <td>Block Contacts</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alt + R</td>
+                                            <td>Report User</td>
+                                        </tr>        
+                                     </tbody>
+                                 </table>
+                                  <br>      
+
+     
+
+ <hr> <br>
+      <p class="indented-paragraph">
+
+
+        <h3 class="indented-paragraph">Enhance Your Productivity with WhatsApp Shortcuts</h3>
+
+        <p class="indented-paragraph" style="line-height: 21px;">We hope these shortcuts help you navigate WhatsApp more efficiently and enhance your productivity. Mastering these key combinations can save you valuable time and streamline your communication process.</p>
+
+        <h3 class="indented-paragraph">Share Your Thoughts</h3>
+
+        <p class="indented-paragraph" style="line-height: 21px;">Have you discovered a new shortcut that's not on our list? Or perhaps you have a favorite that you use all the time? We’d love to hear from you! Share your tips and tricks with our community in the comments below.</p>
+
+
+        <h3 class="indented-paragraph">Stay Updated
+        </h3>
+
+        <p class="indented-paragraph" style="line-height: 21px;">Technology evolves rapidly, and so do the tools we use daily. To keep up with the latest updates and additions, be sure to bookmark Shortcut Sensei and visit us regularly. Follow us on our social media channels for real-time updates and join our newsletter to get tips and tricks delivered straight to your inbox.
+
+        </p>
+
+
+        <h3 class="indented-paragraph">Explore More
+        </h3>
+
+        <p class="indented-paragraph" style="line-height: 21px;">If you found these WhatsApp shortcuts helpful, don’t forget to check out our other guides:
+
+
+            <ul>
+
+                <li><a href="#Add_windows_shortcuts_rafi">Top 100 Windows Shortcuts</a></li>
+
+
+                <li><a href="#Add_macOS_shortcuts_rafi">Essential MacOS Shortcuts</a></li>
+
+                <li><a href="#Add_Microsoft_Office_shortcuts_rafi">Productivity Tips for Microsoft Office</a></li>
+
+            </ul>
+
+            <h3 class="indented-paragraph">Get in Touch
+            </h3>
+    
+            <p class="indented-paragraph" style="line-height: 21px;">If you have any questions, suggestions, or feedback, feel free to contact us. Your input helps us improve and provide you with the best possible resources.
+
+
+    
+            </p>
+
+        </p>
+
+
+
+      </p>
+    <br>
+    </body>        
+
+
+
+<footer>
+    <div class="footer-content">
+        <ul class="footer-links">
+            <li><a href="Homepage.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#news">Latest News</a></li>
+        </ul>
+        <ul class="social-icons">
+            <li><a href="https://www.facebook.com/profile.php?id=100015198880002"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/RAFI09925204"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/rafi-s-b-m-a3492a265/"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.instagram.com/rafi_s_b_m/"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <div class="subscribe-form">
+            <input type="email" placeholder="Subscribe to our newsletter">
+            <button type="button">Subscribe</button>
+        </div>
+        <p>&copy; 2024 Shortcut Sensei. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.main-nav ul').classList.toggle('show');
+    });
+</script>
+
+</body>
+</html>

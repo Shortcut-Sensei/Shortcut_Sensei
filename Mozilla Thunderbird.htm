@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortcut Sensei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .main-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-nav ul li {
+            position: relative;
+        }
+
+        .main-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .main-nav ul li a:hover {
+            background-color: #444;
+            border-radius: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 5px 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 20px;
+            margin-right: 10px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-container button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #6a1b9a;
+        }
+
+        .search-container button i {
+            color: #fff;
+        }
+
+         /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .search-container, .menu-toggle {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-container input[type="text"] {
+                width: 100%;
+            }
+
+            .features .feature, .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Search table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            background-color: #fff;
+            overflow: hidden; /* Ensures that curved corners are applied */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #2cba19;
+            color: #333;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+        .indented-paragraph {
+        margin-left: 11.5%; /* Adjust the value 165px as needed */
+        margin-right: 4.4%;  /*440 px */
+    }
+    .my-custom-class {
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Vertically center items */
+        }
+       .image{
+        width: 1000px;
+        height: 500px;
+        margin-left: 165px;
+
+       }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .footer-links li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons li {
+            display: inline;
+        }
+
+        .social-icons li a {
+            color: #fff;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .social-icons li a:hover {
+            color: #6a1b9a;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .subscribe-form input[type="email"] {
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1em;
+        }
+
+        .subscribe-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #6a1b9a;
+        }
+
+        footer p {
+            margin: 20px 0 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                flex-direction: column;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .features .feature,
+            .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .search-container input[type="text"] {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="Homepage.html">Shortcut Sensei</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="Homepage.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="https://www.instagram.com/rafi_s_b_m/">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button type="button" onclick="searchShortcuts()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <br>
+    <h1 style="text-align: left; margin-left: 10.5%;font-size: 40px;">Top 71 Shortcuts for Mozilla Thunderbird</h1>
+    <p class="indented-paragraph"> Transform your creative vision into reality with Adobe Photoshop. From photo editing to graphic design, Photoshop offers unparalleled versatility and precision, empowering you to bring your ideas to life.
+
+    </p>
+
+    <div class="my-custom-class">
+        <img src="Mozilla Thunderbird.webp" alt="Mozilla Thunderbird" class="image">
+    </div>    
+
+    <br>
+
+<p class="indented-paragraph" style="line-height: 26px;"> <b>Discover the Possibilities</b><br>
+
+    Unleash your creativity and explore endless possibilities with Adobe Photoshop. Whether you're a professional designer, photographer, or enthusiast, Photoshop provides the tools you need to turn imagination into stunning visuals.
+    </p>
+      <br>
+  
+
+  <p class="indented-paragraph"></p>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Email Navigation Shortcuts</h2>
+
+  <p class="indented-paragraph">
+
+    Quickly navigate between different email folders such as Inbox, Sent, Drafts, etc., and move through email messages efficiently.
+
+</p>
+
+    
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <td>Ctrl + 1</td>
+                  <td>Switch to Inbox folder</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + 2</td>
+                  <td>Switch to Sent folder</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + 3</td>
+                  <td>Switch to Drafts folder</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + 4</td>
+                  <td>Switch to Junk folder</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + 5</td>
+                  <td>Switch to Trash folder</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + 6</td>
+                  <td>Switch to Archives folder</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + ↑ (Up Arrow)</td>
+                  <td>Move to the previous message</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + ↓ (Down Arrow)</td>
+                  <td>Move to the next message</td>
+                </tr>
+                <tr>
+                  <td>Spacebar</td>
+                  <td>Scroll down in the message list</td>
+                </tr>
+                <tr>
+                  <td>Shift + Spacebar</td>
+                  <td>Scroll up in the message list</td>
+                </tr>                
+        </tbody>
+    </table>
+  <br>
+
+  <!-- 2nd part -->
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Message Management Shortcuts</h2>
+
+  <p class="indented-paragraph">
+    Manage email messages effectively by performing actions like creating new messages, replying, forwarding, deleting, and marking as junk or read.
+
+</p>
+
+
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <td>Ctrl + N</td>
+                  <td>Create a new message</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + R</td>
+                  <td>Reply to the selected message</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + R</td>
+                  <td>Reply to all recipients of the selected message</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + F</td>
+                  <td>Forward the selected message</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + F</td>
+                  <td>Forward the selected message as an attachment</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + M</td>
+                  <td>Move the selected message to a different folder</td>
+                </tr>
+                <tr>
+                  <td>Delete</td>
+                  <td>Delete the selected message</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + J</td>
+                  <td>Mark the selected message as junk</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + J</td>
+                  <td>Mark the selected message as not junk</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + U</td>
+                  <td>Mark the selected message as unread</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + K</td>
+                  <td>Mark the selected message as read</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + Delete</td>
+                  <td>Permanently delete the selected message</td>
+                </tr>                                  
+        </tbody>
+    </table>
+     <br>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Composing Email Shortcuts</h2>
+
+  <p class="indented-paragraph">
+
+    Streamline the email composition process with shortcuts for sending, saving drafts, inserting hyperlinks, and checking spelling.
+
+
+</p>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <td>Ctrl + Enter</td>
+                  <td>Send the composed message</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + S</td>
+                  <td>Save the composed message as a draft</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + S</td>
+                  <td>Save the composed message as a template</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + K</td>
+                  <td>Insert a hyperlink into the message</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + L</td>
+                  <td>Add a recipient from the address book</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + C</td>
+                  <td>Add a recipient from the contacts list</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + . (period)</td>
+                  <td>Insert a signature into the message</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + / (forward slash)</td>
+                  <td>Check spelling in the message</td>
+                </tr>                                 
+        </tbody>
+    </table>
+    <br>
+
+
+<h2 style="text-align: left; margin-left: 10.5%;">Folder and Account Shortcuts</h2>
+
+<p class="indented-paragraph">
+
+    Access various folders and account settings with ease, allowing for better organization and customization of email accounts.
+
+</p>
+
+  <table>
+   
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <td>Ctrl + Shift + B</td>
+                  <td>Open the address book</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + T</td>
+                  <td>Open the task list</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + C</td>
+                  <td>Open the calendar</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + F</td>
+                  <td>Open the filter list</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + O</td>
+                  <td>Open the folder list</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + A</td>
+                  <td>Open the account settings</td>
+                </tr>                                               
+        </tbody>
+    </table>
+     <br>
+
+
+     <h2 style="text-align: left; margin-left: 10.5%;">Search Shortcuts</h2>
+
+     <p class="indented-paragraph">
+
+        Enhance productivity by searching for specific messages, text within messages, or messages from particular senders quickly.
+</p>
+   
+      
+       <table border="1">
+           <thead>
+               <tr>
+                   <th style="color: #fff;">Key Combination</th>
+                   <th style="color: #fff;">Description</th>
+               </tr>
+           </thead>
+           <tbody>
+                <tr>
+                  <td>Ctrl + Shift + K</td>
+                  <td>Search for messages</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + F</td>
+                  <td>Search for text within the currently selected message</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + H</td>
+                  <td>Search for messages from the currently selected sender</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + S</td>
+                  <td>Search for messages with the same subject</td>
+                </tr>
+           </tbody>
+       </table>
+        <br>       
+
+     
+     <h2 style="text-align: left; margin-left: 10.5%;">Navigation Shortcuts</h2>
+
+     <p class="indented-paragraph">
+     
+         Navigate through message panes and composition windows smoothly, enabling seamless movement within the email client.
+
+
+
+    </p>
+
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                    <tr>
+                      <td>Ctrl + ↑ (Up Arrow)</td>
+                      <td>Scroll up in the message pane</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + ↓ (Down Arrow)</td>
+                      <td>Scroll down in the message pane</td>
+                    </tr>
+                    <tr>
+                      <td>Page Up</td>
+                      <td>Scroll up one page in the message pane</td>
+                    </tr>
+                    <tr>
+                      <td>Page Down</td>
+                      <td>Scroll down one page in the message pane</td>
+                    </tr>
+                    <tr>
+                      <td>Home</td>
+                      <td>Scroll to the top of the message pane</td>
+                    </tr>
+                    <tr>
+                      <td>End</td>
+                      <td>Scroll to the bottom of the message pane</td>
+                    </tr>
+                    <tr>
+                      <td>Tab</td>
+                      <td>Move to the next field in the message composition window</td>
+                    </tr>
+                    <tr>
+                      <td>Shift + Tab</td>
+                      <td>Move to the previous field in the message composition window</td>
+                    </tr>                             
+             </tbody>
+             </table>        
+          <br>
+
+
+     <h2 style="text-align: left; margin-left: 10.5%;">Miscellaneous Shortcuts</h2>
+
+     <p class="indented-paragraph">
+
+        Access additional functionalities such as selecting messages, closing tabs/windows, managing folders, and performing other miscellaneous tasks efficiently.
+
+        </p>
+     
+
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                    <tr>
+                      <td>F7</td>
+                      <td>Check spelling in the message</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + P</td>
+                      <td>Print the selected message</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + A</td>
+                      <td>Select all messages in the current folder</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + A</td>
+                      <td>Select all messages in the current thread</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + D</td>
+                      <td>Duplicate the selected message</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + F4</td>
+                      <td>Close the current message tab</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + W</td>
+                      <td>Close the current message window</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + W</td>
+                      <td>Close all message windows</td>
+                    </tr>
+                    <tr>
+                      <td>Alt + ↑ (Up Arrow)</td>
+                      <td>Move to the previous folder in the folder list</td>
+                    </tr>
+                    <tr>
+                      <td>Alt + ↓ (Down Arrow)</td>
+                      <td>Move to the next folder in the folder list</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + L</td>
+                      <td>Go to the Inbox folder</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + J</td>
+                      <td>Go to the Junk folder</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + T</td>
+                      <td>Go to the Trash folder</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + A</td>
+                      <td>Go to the Archives folder</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + E</td>
+                      <td>Expand all folders in the folder pane</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + C</td>
+                      <td>Collapse all folders in the folder pane</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + R</td>
+                      <td>Refresh the current folder</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + N</td>
+                      <td>Create a new folder</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + I</td>
+                      <td>Import messages</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + X</td>
+                      <td>Export messages</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + L</td>
+                      <td>Open the activity manager</td>
+                    </tr>
+                    <tr>
+                      <td>Ctrl + Shift + N</td>
+                      <td>Open the address book in a new window</td>
+                    </tr>                    
+             </tbody>
+         </table>
+          <br>
+
+
+ <hr> <br>
+      <p class="indented-paragraph">After mastering these shortcuts, you'll navigate Microsoft Edge like a pro, boosting your productivity and efficiency. Remember to practice regularly to integrate them seamlessly into your workflow. Additionally, consider customizing shortcuts to suit your preferences and workflow better. Happy browsing!</p>
+    <br>
+    </body>        
+
+
+
+<footer>
+    <div class="footer-content">
+        <ul class="footer-links">
+            <li><a href="Homepage.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#news">Latest News</a></li>
+        </ul>
+        <ul class="social-icons">
+            <li><a href="https://www.facebook.com/profile.php?id=100015198880002"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/RAFI09925204"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/rafi-s-b-m-a3492a265/"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.instagram.com/rafi_s_b_m/"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <div class="subscribe-form">
+            <input type="email" placeholder="Subscribe to our newsletter">
+            <button type="button">Subscribe</button>
+        </div>
+        <p>&copy; 2024 Shortcut Sensei. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.main-nav ul').classList.toggle('show');
+    });
+</script>
+
+</body>
+</html>

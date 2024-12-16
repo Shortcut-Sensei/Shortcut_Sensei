@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortcut Sensei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .main-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-nav ul li {
+            position: relative;
+        }
+
+        .main-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .main-nav ul li a:hover {
+            background-color: #444;
+            border-radius: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 5px 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 20px;
+            margin-right: 10px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-container button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #6a1b9a;
+        }
+
+        .search-container button i {
+            color: #fff;
+        }
+
+         /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .search-container, .menu-toggle {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-container input[type="text"] {
+                width: 100%;
+            }
+
+            .features .feature, .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Search table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            background-color: #fff;
+            overflow: hidden; /* Ensures that curved corners are applied */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #2cba19;
+            color: #333;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+        .indented-paragraph {
+        margin-left: 11.5%; /* Adjust the value 165px as needed */
+        margin-right: 4.4%;  /*440 px */
+    }
+    .my-custom-class {
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Vertically center items */
+        }
+       .image{
+        width: 1000px;
+        height: 500px;
+        margin-left: 165px;
+
+       }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .footer-links li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons li {
+            display: inline;
+        }
+
+        .social-icons li a {
+            color: #fff;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .social-icons li a:hover {
+            color: #6a1b9a;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .subscribe-form input[type="email"] {
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1em;
+        }
+
+        .subscribe-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #6a1b9a;
+        }
+
+        footer p {
+            margin: 20px 0 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                flex-direction: column;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .features .feature,
+            .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .search-container input[type="text"] {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="Homepage.html">Shortcut Sensei</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="homepage.htm">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="https://www.instagram.com/rafi_s_b_m/">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button type="button" onclick="searchShortcuts()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <h1 style="text-align: left; margin-left: 10.5%;font-size: 40px;">Google Chrome Shortcuts</h1>
+    <p class="indented-paragraph" style="line-height: 21px;"> Even if you're quite familiar with Microsoft PowerPoint, you might be taken aback by the range and diversity of keyboard shortcuts you can use to accelerate your tasks and generally enhance convenience.
+    </p>
+    <div class="my-custom-class">
+        <img src="Google_Chrome.jpg" alt="Google Chrome" class="image">
+    </div>    
+
+    <p class="indented-paragraph" style="line-height: 20px;">Now, does anyone anticipate you to commit all these keyboard combinations to memory? Certainly not! Each person's requirements differ, so some shortcuts will prove more beneficial to you than others. Even acquiring a handful of new techniques can be valuable. We've also aimed to keep the list neat and straightforward, so feel free to print it out if that aids you!</p>
+
+    
+    
+   <p class="indented-paragraph" style="line-height: 20px;"> Furthermore, although our compilation of shortcuts here is fairly extensive, it's not an exhaustive roster of every keyboard combo accessible in PowerPoint. We've focused on the more universally practical shortcuts. Additionally, you'll be pleased to learn that nearly all of these shortcuts have been around for quite some time, thus they should prove beneficial regardless of which version of PowerPoint you're utilizing.</p>
+
+   <p class="indented-paragraph" style="line-height: 20px;"><b>Note: </b><br> Present keyboard combinations using the following convention. A plus (+) signifies that you should press those keys simultaneously. A comma (,) signifies that you should press keys sequentially. For instance, "Ctrl+N" indicates holding down the Ctrl key while pressing the N key and then releasing both keys. Conversely, "Alt+N,P" entails holding down the Alt key, pressing the N key, releasing the N key, pressing the P key, and then releasing all keys.</p><br>
+
+<h2 style="text-align: left; margin-left: 10.5%;">Tab Panel & Window Hotkeys</h2>
+<p class="indented-paragraph" style="line-height: 23px;">Boost productivity and streamline navigation by utilizing Google Chrome's keyboard shortcuts for seamless tab and window management.</p><br>
+
+
+
+<table border="1">
+    <tr>
+      <th style="color: #fff;">Action</th>   <!-- style="width: 620px;-->
+      <th style="color: #fff;">Shortcut</th>
+    </tr>
+    <tr>
+      <td>Open a new window</td>
+      <td>Ctrl + n</td>
+    </tr>
+    <tr>
+      <td>Open a new window in Incognito mode</td>
+      <td>Ctrl + Shift + n</td>
+    </tr>
+    <tr>
+      <td>Open a new tab, and jump to it</td>
+      <td>Ctrl + t</td>
+    </tr>
+    <tr>
+      <td>Reopen previously closed tabs in the order they were closed</td>
+      <td>Ctrl + Shift + t</td>
+    </tr>
+    <tr>
+      <td>Jump to the next open tab</td>
+      <td>Ctrl + Tab or Ctrl + PgDn</td>
+    </tr>
+    <tr>
+      <td>Jump to the previous open tab</td>
+      <td>Ctrl + Shift + Tab or Ctrl + PgUp</td>
+    </tr>
+    <tr>
+      <td>Jump to a specific tab</td>
+      <td>Ctrl + 1 through Ctrl + 8</td>
+    </tr>
+    <tr>
+      <td>Jump to the rightmost tab</td>
+      <td>Ctrl + 9</td>
+    </tr>
+    <tr>
+      <td>Open your home page in the current tab</td>
+      <td>Alt + Home</td>
+    </tr>
+    <tr>
+      <td>Open the previous page from your browsing history in the current tab</td>
+      <td>Alt + Left arrow</td>
+    </tr>
+    <tr>
+      <td>Open the next page from your browsing history in the current tab</td>
+      <td>Alt + Right arrow</td>
+    </tr>
+    <tr>
+      <td>Close the current tab</td>
+      <td>Ctrl + w or Ctrl + F4</td>
+    </tr>
+    <tr>
+      <td>Close the current window</td>
+      <td>Ctrl + Shift + w or Alt + F4</td>
+    </tr>
+    <tr>
+      <td>Minimize the current window</td>
+      <td>Alt + Space then n</td>
+    </tr>
+    <tr>
+      <td>Maximize the current window</td>
+      <td>Alt + Space then x</td>
+    </tr>
+    <tr>
+      <td>Quit Google Chrome</td>
+      <td>Alt + f then x</td>
+    </tr>
+    <tr>
+      <td>Move tabs right or left</td>
+      <td>Ctrl + Shift + PgUp or Ctrl + Shift + PgDn</td>
+    </tr>
+  </table>
+  
+<br>
+
+<!--from here the second part starts-->
+
+<h2 style="text-align: left; margin-left: 10.5%;">Chrome Feature Hotkeys</h2>
+<p class="indented-paragraph" style="line-height: 23px;">Quickly access and utilize Chrome's diverse features with intuitive keyboard shortcuts, optimizing browsing convenience and productivity.</p>
+<table border="1">
+    <tr>
+      <th style="color: #fff;">Action</th>
+      <th style="color: #fff;">Shortcut</th>
+    </tr>
+    <tr>
+      <td>Open the Chrome menu</td>
+      <td>Alt + f or Alt + e</td>
+    </tr>
+    <tr>
+      <td>Show or hide the Bookmarks bar</td>
+      <td>Ctrl + Shift + b</td>
+    </tr>
+    <tr>
+      <td>Open the Bookmarks Manager</td>
+      <td>Ctrl + Shift + o</td>
+    </tr>
+    <tr>
+      <td>Open the History page in a new tab</td>
+      <td>Ctrl + h</td>
+    </tr>
+    <tr>
+      <td>Open the Downloads page in a new tab</td>
+      <td>Ctrl + j</td>
+    </tr>
+    <tr>
+      <td>Open the Chrome Task Manager</td>
+      <td>Shift + Esc</td>
+    </tr>
+    <tr>
+      <td>Set focus on the first item in the Chrome toolbar</td>
+      <td>Shift + Alt + t</td>
+    </tr>
+    <tr>
+      <td>Set focus on the rightmost item in the Chrome toolbar</td>
+      <td>F10</td>
+    </tr>
+    <tr>
+      <td>Switch focus to unfocused dialog (if showing) and all toolbars</td>
+      <td>F6</td>
+    </tr>
+    <tr>
+      <td>Open the Find Bar to search the current page</td>
+      <td>Ctrl + f or F3</td>
+    </tr>
+    <tr>
+      <td>Jump to the next match to your Find Bar search</td>
+      <td>Ctrl + g</td>
+    </tr>
+    <tr>
+      <td>Jump to the previous match to your Find Bar search</td>
+      <td>Ctrl + Shift + g</td>
+    </tr>
+    <tr>
+      <td>Open Developer Tools</td>
+      <td>Ctrl + Shift + j or F12</td>
+    </tr>
+    <tr>
+      <td>Open the Clear Browsing Data options</td>
+      <td>Ctrl + Shift + Delete</td>
+    </tr>
+    <tr>
+      <td>Open the Chrome Help Center in a new tab</td>
+      <td>F1</td>
+    </tr>
+    <tr>
+      <td>Log in a different user or browse as a Guest</td>
+      <td>Ctrl + Shift + m</td>
+    </tr>
+    <tr>
+      <td>Open a feedback form</td>
+      <td>Alt + Shift + i</td>
+    </tr>
+    <tr>
+      <td>Turn on caret browsing</td>
+      <td>F7</td>
+    </tr>
+    <tr>
+      <td>Skip to web contents</td>
+      <td>Ctrl + F6</td>
+    </tr>
+    <tr>
+      <td>Focus on inactive dialogs</td>
+      <td>Alt + Shift + a</td>
+    </tr>
+  </table>  
+<br>
+
+<!--From here the 3th part starts-->
+
+<h2 style="text-align: left; margin-left: 10.5%;">Address Bar Quick Keys</h2>
+
+<p class="indented-paragraph" style="line-height: 23px;">MAccelerate your browsing experience with Address Bar Quick Keys, enabling swift access to URLs and commands for efficient navigation in Google Chrome.</p>
+
+<table border="1">
+    <tr>
+      <th style="color: #fff;">Action</th>
+      <th style="color: #fff;">Shortcut</th>
+    </tr>
+    <tr>
+      <td>Search with your default search engine</td>
+      <td>Type a search term + Enter</td>
+    </tr>
+    <tr>
+      <td>Search using a different search engine</td>
+      <td>Type a search engine name and press Tab</td>
+    </tr>
+    <tr>
+      <td>Add www. and .com to a site name, and open it in the current tab</td>
+      <td>Type a site name + Ctrl + Enter</td>
+    </tr>
+    <tr>
+      <td>Add www. and .com to a site name, and open it in a new window</td>
+      <td>Type a site name + Ctrl + Shift + Enter</td>
+    </tr>
+    <tr>
+      <td>Open a new tab and perform a Google search</td>
+      <td>Type a search term + Alt + Enter</td>
+    </tr>
+    <tr>
+      <td>Jump to the address bar</td>
+      <td>Ctrl + l or Alt + d or F6</td>
+    </tr>
+    <tr>
+      <td>Search from anywhere on the page</td>
+      <td>Ctrl + k or Ctrl + e</td>
+    </tr>
+    <tr>
+      <td>Remove predictions from your address bar</td>
+      <td>Down arrow to highlight + Shift + Delete</td>
+    </tr>
+    <tr>
+      <td>Move cursor to the address bar</td>
+      <td>Ctrl + F5</td>
+    </tr>
+  </table>
+  
+<br>
+
+<!-- from here the next part -->
+
+
+<h2 style="text-align: left; margin-left: 10.5%;">Webpage shortcuts</h2>
+<p class="indented-paragraph" style="line-height: 23px;">Simplify browsing tasks and streamline navigation with Webpage Shortcuts, empowering users to swiftly access key features and commands for enhanced productivity in Google Chrome.</p>
+<table border="1">
+    <tr>
+      <th sstyle="color: #fff;">Action</th>
+      <th style="color: #fff;">Shortcut</th>
+    </tr>
+    <tr>
+      <td>Open options to print the current page</td>
+      <td>Ctrl + p</td>
+    </tr>
+    <tr>
+      <td>Open options to save the current page</td>
+      <td>Ctrl + s</td>
+    </tr>
+    <tr>
+      <td>Reload the current page</td>
+      <td>F5 or Ctrl + r</td>
+    </tr>
+    <tr>
+      <td>Reload the current page, ignoring cached content</td>
+      <td>Shift + F5 or Ctrl + Shift + r</td>
+    </tr>
+    <tr>
+      <td>Stop the page loading</td>
+      <td>Esc</td>
+    </tr>
+    <tr>
+      <td>Browse clickable items moving forward</td>
+      <td>Tab</td>
+    </tr>
+    <tr>
+      <td>Browse clickable items moving backward</td>
+      <td>Shift + Tab</td>
+    </tr>
+    <tr>
+      <td>Open a file from your computer in Chrome</td>
+      <td>Ctrl + o + Select a file</td>
+    </tr>
+    <tr>
+      <td>Display non-editable HTML source code for the current page</td>
+      <td>Ctrl + u</td>
+    </tr>
+    <tr>
+      <td>Save your current webpage as a bookmark</td>
+      <td>Ctrl + d</td>
+    </tr>
+    <tr>
+      <td>Save all open tabs as bookmarks in a new folder</td>
+      <td>Ctrl + Shift + d</td>
+    </tr>
+    <tr>
+      <td>Turn full-screen mode on or off</td>
+      <td>F11</td>
+    </tr>
+    <tr>
+      <td>Make everything on the page bigger</td>
+      <td>Ctrl and +</td>
+    </tr>
+    <tr>
+      <td>Make everything on the page smaller</td>
+      <td>Ctrl and -</td>
+    </tr>
+    <tr>
+      <td>Return everything on the page to default size</td>
+      <td>Ctrl + 0</td>
+    </tr>
+    <tr>
+      <td>Scroll down a webpage, a screen at a time</td>
+      <td>Space or PgDn</td>
+    </tr>
+    <tr>
+      <td>Scroll up a webpage, a screen at a time</td>
+      <td>Shift + Space or PgUp</td>
+    </tr>
+    <tr>
+      <td>Go to the top of the page</td>
+      <td>Home</td>
+    </tr>
+    <tr>
+      <td>Go to the bottom of the page</td>
+      <td>End</td>
+    </tr>
+    <tr>
+      <td>Scroll horizontally on the page</td>
+      <td>Shift + Scroll your mousewheel</td>
+    </tr>
+    <tr>
+      <td>Move your cursor to the beginning of the previous word in a text field</td>
+      <td>Ctrl + Left arrow</td>
+    </tr>
+    <tr>
+      <td>Move your cursor to the next word</td>
+      <td>Ctrl + Right arrow</td>
+    </tr>
+    <tr>
+      <td>Delete the previous word in a text field</td>
+      <td>Ctrl + Backspace</td>
+    </tr>
+    <tr>
+      <td>Open the Home page in the current tab</td>
+      <td>Alt + Home</td>
+    </tr>
+  </table>
+  
+<br>
+
+<!--from here the next part -->
+
+<h2 style="text-align: left; margin-left: 10.5%;">Mouse Gestures</h2>
+<p class="indented-paragraph" style="line-height: 23px;">The following shortcuts require you to use your mouse: </p>
+<table border="1">
+    <tr>
+      <th style="color: #fff;">Action</th>
+      <th style="color: #fff;">Shortcut</th>
+    </tr>
+    <tr>
+      <td>Open a link in a current tab (mouse only)</td>
+      <td>Drag a link to a tab</td>
+    </tr>
+    <tr>
+      <td>Open a link in new background tab</td>
+      <td>Ctrl + Click a link</td>
+    </tr>
+    <tr>
+      <td>Open a link, and jump to it</td>
+      <td>Ctrl + Shift + Click a link</td>
+    </tr>
+    <tr>
+      <td>Open a link, and jump to it (mouse only)</td>
+      <td>Drag a link to a blank area of the tab strip</td>
+    </tr>
+    <tr>
+      <td>Open a link in a new window</td>
+      <td>Shift + Click a link</td>
+    </tr>
+    <tr>
+      <td>Open a tab in a new window (mouse only)</td>
+      <td>Drag the tab out of the tab strip</td>
+    </tr>
+    <tr>
+      <td>Move a tab to a current window (mouse only)</td>
+      <td>Drag the tab into an existing window</td>
+    </tr>
+    <tr>
+      <td>Return a tab to its original position</td>
+      <td>Press Esc while dragging</td>
+    </tr>
+    <tr>
+      <td>Save the current webpage as a bookmark</td>
+      <td>Drag the web address to the Bookmarks Bar</td>
+    </tr>
+    <tr>
+      <td>Scroll horizontally on the page</td>
+      <td>Shift + Scroll your mousewheel</td>
+    </tr>
+    <tr>
+      <td>Download the target of a link</td>
+      <td>Alt + Click a link</td>
+    </tr>
+    <tr>
+      <td>Display your browsing history</td>
+      <td>Right-click Back Back or click & hold Back Back</td>
+    </tr>
+    <tr>
+      <td>Display your browsing history</td>
+      <td>Right-click Next Next or click & hold Next Next</td>
+    </tr>
+    <tr>
+      <td>Switch between maximized and windowed modes</td>
+      <td>Double-click a blank area of the tab strip</td>
+    </tr>
+    <tr>
+      <td>Make everything on the page bigger</td>
+      <td>Ctrl + Scroll your mousewheel up</td>
+    </tr>
+    <tr>
+      <td>Make everything on the page smaller</td>
+      <td>Ctrl + Scroll your mousewheel down</td>
+    </tr>
+  </table>
+<br>  
+
+
+
+
+<footer>
+    <div class="footer-content">
+        <ul class="footer-links">
+            <li><a href="Homepage.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#news">Latest News</a></li>
+        </ul>
+        <ul class="social-icons">
+            <li><a href="https://www.facebook.com/profile.php?id=100015198880002"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/RAFI09925204"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/rafi-s-b-m-a3492a265/"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.instagram.com/rafi_s_b_m/"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <div class="subscribe-form">
+            <input type="email" placeholder="Subscribe to our newsletter">
+            <button type="button">Subscribe</button>
+        </div>
+        <p>&copy; 2024 Shortcut Sensei. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.main-nav ul').classList.toggle('show');
+    });
+</script>
+
+</body>
+</html>

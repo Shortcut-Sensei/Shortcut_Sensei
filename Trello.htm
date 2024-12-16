@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortcut Sensei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .main-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-nav ul li {
+            position: relative;
+        }
+
+        .main-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .main-nav ul li a:hover {
+            background-color: #444;
+            border-radius: 4px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 5px 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container input[type="text"] {
+            padding: 8px;
+            border: none;
+            border-radius: 20px;
+            margin-right: 10px;
+            width: 300px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-container button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+
+        .search-container button:hover {
+            background-color: #6a1b9a;
+        }
+
+        .search-container button i {
+            color: #fff;
+        }
+
+         /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .search-container, .menu-toggle {
+                margin-top: 10px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .search-container input[type="text"] {
+                width: 100%;
+            }
+
+            .features .feature, .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Search table styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            background-color: #fff;
+            overflow: hidden; /* Ensures that curved corners are applied */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #2cba19;
+            color: #333;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+        .indented-paragraph {
+        margin-left: 11.5%; /* Adjust the value 165px as needed */
+        margin-right: 4.4%;  /*440 px */
+    }
+    .my-custom-class {
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Vertically center items */
+        }
+       .image{
+        width: 1000px;
+        height: 500px;
+        margin-left: 165px;
+
+       }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .footer-links li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icons li {
+            display: inline;
+        }
+
+        .social-icons li a {
+            color: #fff;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .social-icons li a:hover {
+            color: #6a1b9a;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .subscribe-form input[type="email"] {
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1em;
+        }
+
+        .subscribe-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: purple;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .subscribe-form button:hover {
+            background-color: #6a1b9a;
+        }
+
+        footer p {
+            margin: 20px 0 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                flex-direction: column;
+                display: none;
+            }
+
+            .main-nav ul.show {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .features .feature,
+            .latest-news article {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .search-container input[type="text"] {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="Homepage.html">Shortcut Sensei</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="Homepage.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="https://www.instagram.com/rafi_s_b_m/">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <button type="button" onclick="searchShortcuts()"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <br>
+    <h1 style="text-align: left; margin-left: 10.5%;font-size: 40px;">Top 68 Shortcuts for Trello</h1>
+    <p class="indented-paragraph"> Transform your creative vision into reality with Adobe Photoshop. From photo editing to graphic design, Photoshop offers unparalleled versatility and precision, empowering you to bring your ideas to life.
+
+    </p>
+
+    <div class="my-custom-class">
+        <img src="Trello.png" alt="Trello" class="image">
+    </div>    
+
+    <br>
+
+<p class="indented-paragraph" style="line-height: 26px;"> <b>Discover the Possibilities</b><br>
+
+    Unleash your creativity and explore endless possibilities with Adobe Photoshop. Whether you're a professional designer, photographer, or enthusiast, Photoshop provides the tools you need to turn imagination into stunning visuals.
+    </p>
+      <br>
+  
+
+  <p class="indented-paragraph"></p>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Navigation Shortcuts</h2>
+
+  <p class="indented-paragraph">
+
+    Navigate Trello effortlessly with these shortcuts. Quickly access boards, dates, filters, and more, enhancing your productivity.
+
+</p>
+
+    
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>Ctrl + /</td>
+              <td>Open the shortcuts menu.</td>
+            </tr>
+            <tr>
+              <td>Space</td>
+              <td>Scroll board to center.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + B</td>
+              <td>Open boards menu.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + D</td>
+              <td>Open dates menu.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + F</td>
+              <td>Open filters menu.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + M</td>
+              <td>Open members menu.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Q</td>
+              <td>Open quick card search.</td>
+            </tr>
+            <tr>
+              <td>↑ / ↓ / ← / →</td>
+              <td>Navigate through cards and lists.</td>
+            </tr>
+            <tr>
+              <td>Home</td>
+              <td>Go to the top of the board.</td>
+            </tr>
+            <tr>
+              <td>End</td>
+              <td>Go to the bottom of the board.</td>
+            </tr>     
+            <tr>
+              <td>Ctrl + G</td>
+              <td>Jump to a specific card number.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + 1-9</td>
+              <td>Jump to the first to ninth board.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Shift + 1-9</td>
+              <td>Jump to the first to ninth team.</td>
+            </tr>
+            <tr>
+              <td>F5</td>
+              <td>Refresh Trello.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + H</td>
+              <td>View your activity.</td>
+            </tr>                    
+        </tbody>
+    </table>
+  <br>
+
+  <!-- 2nd part -->
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Card Shortcuts</h2>
+
+  <p class="indented-paragraph">
+    Efficiently manage cards with these shortcuts. Create, edit, save, and move cards with ease, streamlining your workflow.
+</p>
+
+
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>N</td>
+              <td>Open new card window.</td>
+            </tr>
+            <tr>
+              <td>Enter</td>
+              <td>Open selected card.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + S</td>
+              <td>Save selected card.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + C</td>
+              <td>Copy selected card.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + X</td>
+              <td>Cut selected card.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + V</td>
+              <td>Paste selected card.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + E</td>
+              <td>Archive selected card.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Shift + N</td>
+              <td>Add a new card to the top of the list.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Shift + Enter</td>
+              <td>Save and close selected card.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + K</td>
+              <td>Assign a due date to the selected card.</td>
+            </tr>                                           
+        </tbody>
+    </table>
+     <br>
+
+  <h2 style="text-align: left; margin-left: 10.5%;">Board Shortcuts</h2>
+
+  <p class="indented-paragraph">
+
+    Take control of your Trello boards with these shortcuts. Access board settings, labels, and power-ups swiftly, optimizing your board management.
+
+
+</p>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th style="color: #fff;">Key Combination</th>
+                <th style="color: #fff;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>C</td>
+              <td>Copy board URL.</td>
+            </tr>
+            <tr>
+              <td>D</td>
+              <td>Open due date picker.</td>
+            </tr>
+            <tr>
+              <td>E</td>
+              <td>Edit the selected card.</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>Search the board.</td>
+            </tr>
+            <tr>
+              <td>Q</td>
+              <td>Focus on board search.</td>
+            </tr>
+            <tr>
+              <td>P</td>
+              <td>Print the board.</td>
+            </tr>
+            <tr>
+              <td>S</td>
+              <td>Open the board settings.</td>
+            </tr>
+            <tr>
+              <td>W</td>
+              <td>Show/hide sidebar.</td>
+            </tr>
+            <tr>
+              <td>T</td>
+              <td>Open labels menu.</td>
+            </tr>
+            <tr>
+              <td>Shift + T</td>
+              <td>Create a new label.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Shift + S</td>
+              <td>Sort the board's cards.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Shift + L</td>
+              <td>Open board activity.</td>
+            </tr>
+            <tr>
+              <td>Ctrl + Shift + P</td>
+              <td>Open board power-ups menu.</td>
+            </tr>                                       
+        </tbody>
+    </table>
+    <br>
+
+
+     <h2 style="text-align: left; margin-left: 10.5%;">Card Movement Shortcuts</h2>
+
+     <p class="indented-paragraph">
+
+        Move cards within lists seamlessly with these shortcuts. Whether you're reordering or shifting cards between lists, these shortcuts make card management a breeze.
+</p>
+   
+      
+       <table border="1">
+           <thead>
+               <tr>
+                   <th style="color: #fff;">Key Combination</th>
+                   <th style="color: #fff;">Description</th>
+               </tr>
+           </thead>
+           <tbody>
+              <tr>
+                <td>Ctrl + →</td>
+                <td>Move selected card to the next list.</td>
+              </tr>
+              <tr>
+                <td>Ctrl + ←</td>
+                <td>Move selected card to the previous list.</td>
+              </tr>
+              <tr>
+                <td>Ctrl + Shift + ↑</td>
+                <td>Move selected card to the top of the list.</td>
+              </tr>
+              <tr>
+                  <td>Ctrl + Shift + ↓</td>
+                  <td>Move selected card to the bottom of the list.</td>
+                </tr>              
+           </tbody>
+       </table>
+        <br>       
+
+     
+     <h2 style="text-align: left; margin-left: 10.5%;">Card Editing Shortcuts</h2>
+
+     <p class="indented-paragraph">
+     
+        Enhance your card editing capabilities with these shortcuts. From adding checklists to attaching files, these shortcuts empower you to customize and organize your cards efficiently.
+
+
+
+    </p>
+
+         <table border="1">
+             <thead>
+                 <tr>
+                     <th style="color: #fff;">Key Combination</th>
+                     <th style="color: #fff;">Description</th>
+                 </tr>
+             </thead>
+             <tbody>
+                <tr>
+                  <td>Ctrl + N</td>
+                  <td>Add a new checklist.</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + N</td>
+                  <td>Add a new checklist item.</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + D</td>
+                  <td>Add a due date.</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + M</td>
+                  <td>Add a new member.</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + T</td>
+                  <td>Add a new label.</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + L</td>
+                  <td>Add a new due date.</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + F</td>
+                  <td>Add an attachment.</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + G</td>
+                  <td>Add a new card cover.</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + I</td>
+                  <td>Add a new card description.</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + M</td>
+                  <td>Add a new card comment.</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + R</td>
+                  <td>Add a new card checklist.</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + S</td>
+                  <td>Add a new card attachment.</td>
+                </tr>
+                <tr>
+                  <td>Ctrl + Shift + E</td>
+                  <td>Add a new card label.</td>
+                </tr>                                       
+             </tbody>
+             </table>        
+          <br>
+
+          <h2 style="text-align: left; margin-left: 10.5%;">Advanced Shortcuts</h2>
+
+          <p class="indented-paragraph">
+     
+             Unlock advanced functionalities with these shortcuts. Change lists, copy checklists, and perform other advanced actions with speed and precision.
+     
+     
+             </p>
+          
+     
+              <table border="1">
+                  <thead>
+                      <tr>
+                          <th style="color: #fff;">Key Combination</th>
+                          <th style="color: #fff;">Description</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                       <td>Ctrl + Shift + L</td>
+                       <td>Change list.</td>
+                     </tr>
+                     <tr>
+                       <td>Ctrl + Shift + C</td>
+                       <td>Copy checklist.</td>
+                     </tr>                               
+                  </tbody>
+              </table>
+               <br>
+     
+
+          <h2 style="text-align: left; margin-left: 10.5%;">Miscellaneous Shortcuts:</h2>
+
+          <p class="indented-paragraph">
+          
+              Miscellaneous shortcuts for various actions in Trello. From undoing actions to selecting text, these shortcuts offer additional functionality for your Trello experience.
+          
+          </p>
+          
+            <table>
+             
+              <table border="1">
+                  <thead>
+                      <tr>
+                          <th style="color: #fff;">Key Combination</th>
+                          <th style="color: #fff;">Description</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td>? (Shift + /)</td>
+                        <td>Open the Trello help menu.</td>
+                      </tr>
+                      <tr>
+                        <td>Esc</td>
+                        <td>Close the current dialog or popover.</td>
+                      </tr>
+                      <tr>
+                        <td>Ctrl + P</td>
+                        <td>Print the current page.</td>
+                      </tr>
+                      <tr>
+                        <td>Ctrl + R</td>
+                        <td>Refresh the current page.</td>
+                      </tr>
+                      <tr>
+                        <td>Ctrl + Z</td>
+                        <td>Undo the last action.</td>
+                      </tr>
+                      <tr>
+                        <td>Ctrl + Y</td>
+                        <td>Redo the last undone action.</td>
+                      </tr>
+                      <tr>
+                        <td>Ctrl + A</td>
+                        <td>Select all cards in a list.</td>
+                      </tr>
+                      <tr>
+                        <td>Ctrl + Shift + A</td>
+                        <td>Deselect all cards.</td>
+                      </tr>
+                      <tr>
+                        <td>Ctrl + Shift + X</td>
+                        <td>Cut selected text.</td>
+                      </tr>
+                      <tr>
+                        <td>Ctrl + Shift + C</td>
+                        <td>Copy selected text.</td>
+                      </tr>
+                      <tr>
+                        <td>Ctrl + Shift + V</td>
+                        <td>Paste copied text.</td>
+                      </tr>                                                        
+                  </tbody>
+              </table>
+               <br>
+
+
+   
+ <hr> <br>
+      <p class="indented-paragraph">After mastering these shortcuts, you'll navigate Microsoft Edge like a pro, boosting your productivity and efficiency. Remember to practice regularly to integrate them seamlessly into your workflow. Additionally, consider customizing shortcuts to suit your preferences and workflow better. Happy browsing!</p>
+    <br>
+    </body>        
+
+
+
+<footer>
+    <div class="footer-content">
+        <ul class="footer-links">
+            <li><a href="Homepage.html">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#news">Latest News</a></li>
+        </ul>
+        <ul class="social-icons">
+            <li><a href="https://www.facebook.com/profile.php?id=100015198880002"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://twitter.com/RAFI09925204"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/rafi-s-b-m-a3492a265/"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.instagram.com/rafi_s_b_m/"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <div class="subscribe-form">
+            <input type="email" placeholder="Subscribe to our newsletter">
+            <button type="button">Subscribe</button>
+        </div>
+        <p>&copy; 2024 Shortcut Sensei. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.main-nav ul').classList.toggle('show');
+    });
+</script>
+
+</body>
+</html>
